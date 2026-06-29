@@ -18,6 +18,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.body-layout{display:flex;min-height:calc(100vh - 64px);position:relative}
 .header{background:#fff;color:var(--navy);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,58,92,0.15);border-bottom:3px solid var(--navy)}
 .header-left{display:flex;align-items:center;gap:12px}
 .header-logo{height:48px;display:flex;align-items:center;justify-content:center}
@@ -34,7 +35,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg
 .config-bar{display:none}
 .btn-config{display:none}
 /* SIDEBAR RIGHT */
-.sidebar{position:fixed;left:0;top:64px;bottom:0;width:60px;background:linear-gradient(180deg,var(--navy-dark),var(--navy));display:flex;flex-direction:column;align-items:center;padding:12px 0;z-index:90;box-shadow:2px 0 12px rgba(0,0,0,0.15);transition:width 0.3s;overflow:hidden}
+.sidebar{position:sticky;left:0;top:64px;height:calc(100vh - 64px);align-self:flex-start;width:60px;background:linear-gradient(180deg,var(--navy-dark),var(--navy));display:flex;flex-direction:column;align-items:center;padding:12px 0;z-index:90;box-shadow:2px 0 12px rgba(0,0,0,0.15);transition:width 0.3s;overflow:hidden;flex-shrink:0}
 .sidebar:hover{width:180px}
 .sidebar-item{width:100%;padding:12px 0;display:flex;align-items:center;gap:10px;cursor:pointer;color:rgba(255,255,255,0.65);transition:0.2s;position:relative;border-right:3px solid transparent;border-left:none;font-size:13px;font-weight:600;white-space:nowrap}
 .sidebar-item .si-icon{min-width:60px;text-align:center;font-size:18px}
@@ -46,14 +47,14 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg
 .sidebar-item .si-badge.orange{background:var(--orange)}
 .sidebar-sep{width:36px;height:1px;background:rgba(255,255,255,0.15);margin:8px auto}
 /* Config panel inside sidebar */
-.config-panel{display:none;position:fixed;left:70px;top:80px;width:400px;background:var(--card);border-radius:var(--radius);box-shadow:0 8px 32px rgba(0,0,0,0.25);z-index:95;overflow:hidden}
+.config-panel{display:none;position:fixed;left:70px;top:80px;width:400px;background:var(--card);border-radius:var(--radius);box-shadow:0 8px 32px rgba(0,0,0,0.25);z-index:200;overflow:hidden}
 .config-panel.show{display:block}
 .config-panel-head{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:#fff;padding:14px 16px;font-size:14px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
 .config-panel-body{padding:16px}
 .config-panel-body input{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;margin-bottom:10px}
 .config-panel-body input:focus{outline:none;border-color:var(--blue-accent);box-shadow:0 0 0 3px rgba(58,123,213,0.15)}
 /* Adjust content for sidebar */
-.content{padding:20px 24px;max-width:1400px;margin:0 auto;margin-left:60px}
+.content{padding:20px 24px;flex:1;min-width:0;box-sizing:border-box}
 .tab .badge{background:var(--red);color:#fff;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:700}
 .tab-orcamento{display:none}
 .page{display:none}.page.active{display:block}
@@ -152,7 +153,7 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
 @media(max-width:768px){.pending-schedule-card{width:100%;justify-content:space-between}}
 @media(max-width:768px){
   .header{padding:0 12px}.header-title{font-size:14px}
-  .content{padding:12px;margin-left:50px}
+  .content{padding:12px;}
   .sidebar{width:50px}.sidebar:hover{width:50px}.sidebar:hover .si-label{opacity:0}
   .sidebar-item{padding:10px 0}.sidebar-item .si-icon{min-width:50px;font-size:16px}
   .config-panel{left:56px;width:calc(100vw - 70px);max-width:360px}
@@ -192,7 +193,9 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
 .orc-resumo-row span:first-child{font-weight:600;color:#556}
 .orc-resumo-row span:last-child{font-weight:700;color:#003E7E;font-size:.88rem}
 .orc-resumo-total{background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 12px;font-size:.96rem;font-weight:800}
-#page-orcamento{padding-bottom:24px}
+#page-orcamento{padding-bottom:24px;width:100%;box-sizing:border-box}
+@media(max-width:1200px){#page-orcamento{zoom:1}}
+@media(max-width:900px){#page-orcamento{zoom:1}}
 
 /* ===== PDF PRINT AREA — identidade visual idêntica ao HTML de referência ===== */
 #orcPdfArea{position:absolute;left:-9999px;top:0;width:794px;background:#EBF1FA;font-family:'Segoe UI',Tahoma,sans-serif;color:#222}
@@ -258,7 +261,8 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
   </div>
 </div>
 
-<!-- SIDEBAR DIREITA -->
+<!-- SIDEBAR -->
+<div class="body-layout">
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item active" data-tab="dashboard" onclick="switchTab('dashboard')"><span class="si-icon">📊</span><span class="si-label">Dashboard</span></div>
   <div class="sidebar-item" data-tab="novo" onclick="switchTab('novo')"><span class="si-icon">➕</span><span class="si-label">Novo Cliente</span></div>
@@ -706,7 +710,7 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
         <button class="btn btn-sm" style="background:rgba(255,255,255,.2);color:#fff;font-size:11px" id="orcClienteToggleBtn">▲ Recolher</button>
       </div>
       <div class="panel-body" id="orcClienteBody" style="padding:14px 18px">
-        <div style="display:grid;grid-template-columns:200px 1fr auto;gap:10px;align-items:end;margin-bottom:10px">
+        <div style="display:grid;grid-template-columns:minmax(160px,200px) 1fr auto;gap:10px;align-items:end;margin-bottom:10px;flex-wrap:wrap">
           <div>
             <label style="font-weight:700;font-size:12px;color:var(--navy);display:block;margin-bottom:4px">CPF do Paciente</label>
             <input type="text" id="orcCpfInput" placeholder="000.000.000-00" oninput="orcBuscarPorCpf(this)" maxlength="14"
@@ -731,7 +735,7 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
         </div>
         <div id="orcFormNovoCliente" style="display:none;background:#f8fafd;border:1.5px solid var(--border);border-radius:8px;padding:14px;margin-top:8px">
           <div style="font-weight:700;font-size:13px;color:var(--navy);margin-bottom:10px">📋 Cadastro Rápido</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
             <div class="form-group" style="margin:0"><label>Nome Completo *</label><input type="text" id="orcFNome" placeholder="Nome do cliente"></div>
             <div class="form-group" style="margin:0"><label>Telefone *</label><input type="tel" id="orcFTel" placeholder="(34) 99999-9999" oninput="maskPhone(this)"></div>
             <div class="form-group" style="margin:0"><label>CPF</label><input type="text" id="orcFCpf" placeholder="000.000.000-00" oninput="maskCpf(this)"></div>
@@ -758,13 +762,13 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
         <!-- DADOS DO PACIENTE -->
         <div class="orc-card">
           <div class="orc-ct"><i class="fa-solid fa-user"></i>Dados do Paciente</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
             <div class="form-group" style="margin:0"><label>CPF</label><input type="text" id="orcPacCpf" placeholder="000.000.000-00" maxlength="14" oninput="maskCpf(this);orcBuscarPorCpfDados(this)"></div>
             <div class="form-group" style="margin:0"><label>Nome Completo *</label><input type="text" id="orcPacNome" placeholder="Nome completo" oninput="document.getElementById('orcNomeP').value=this.value"></div>
             <div class="form-group" style="margin:0"><label>Telefone *</label><input type="tel" id="orcPacTel" placeholder="(34) 99999-9999" maxlength="15" oninput="orcMaskTel(this);document.getElementById('orcTelP').value=this.value"></div>
             <div class="form-group" style="margin:0"><label>Email</label><input type="email" id="orcPacEmail" placeholder="email@exemplo.com"></div>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:8px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:8px">
             <div class="form-group" style="margin:0"><label>Canal de Contato</label>
               <select id="orcPacCanal">
                 <option value="">Selecione...</option>
@@ -787,7 +791,7 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
               </select>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:8px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:8px">
             <div class="form-group" style="margin:0"><label>Status</label>
               <select id="orcPacStatus">
                 <option>Novo Contato</option>
@@ -3354,6 +3358,7 @@ function baixarResumoExcel(){
     </div>
   </div>
 </div>
+</div><!-- /body-layout -->
 
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
