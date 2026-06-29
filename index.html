@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cruzeiro Conecta - Sala de Vacina</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <style>
 :root {
   --navy:#1a3a5c;--navy-light:#2c5f8a;--navy-dark:#0f2440;--blue-accent:#3a7bd5;
@@ -55,7 +56,6 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg
 .content{padding:20px 24px;max-width:1400px;margin:0 auto;margin-left:60px}
 .tab .badge{background:var(--red);color:#fff;font-size:10px;padding:2px 6px;border-radius:10px;font-weight:700}
 .tab-orcamento{display:none}
-.content{padding:20px 24px;max-width:1400px;margin:0 auto}
 .page{display:none}.page.active{display:block}
 .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
 .stat-card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border-left:4px solid var(--navy);transition:0.2s}
@@ -194,6 +194,54 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
 .orc-resumo-total{background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 12px;font-size:.96rem;font-weight:800}
 #page-orcamento{padding-bottom:24px}
 
+/* ===== PDF PRINT AREA — identidade visual idêntica ao HTML de referência ===== */
+#orcPdfArea{position:absolute;left:-9999px;top:0;width:794px;background:#EBF1FA;font-family:'Segoe UI',Tahoma,sans-serif;color:#222}
+#orcPdfArea .pht{background:#fff;text-align:center;padding:14px 20px 10px;display:flex;justify-content:center;align-items:center;gap:24px}
+#orcPdfArea .pht img{height:72px;object-fit:contain}
+#orcPdfArea .phb{background:linear-gradient(135deg,#003E7E,#0F5FB5);min-height:1.5cm;display:flex;flex-direction:column;justify-content:center;padding:8px 20px;text-align:center;color:#fff}
+#orcPdfArea .phb h1{font-size:1.5rem;font-weight:800;margin:0;letter-spacing:2px}
+#orcPdfArea .phb p{font-size:.82rem;margin:3px 0 0;opacity:.78}
+#orcPdfArea .pcd{background:rgba(255,255,255,.94);border:1.5px solid #c8d6e8;border-radius:10px;box-shadow:0 3px 14px rgba(0,62,126,.08);margin:8px 14px;position:relative;overflow:hidden}
+#orcPdfArea .pcd::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#003E7E,#0F5FB5);border-radius:10px 10px 0 0}
+#orcPdfArea .pct{display:flex;align-items:center;gap:7px;font-weight:700;font-size:.78rem;color:#003E7E;padding:9px 12px 6px;border-bottom:1px solid #e0e8f2}
+#orcPdfArea .pct i{font-size:.76rem;width:22px;height:22px;display:flex;align-items:center;justify-content:center;background:#DCE8F7;border-radius:5px;color:#003E7E;flex-shrink:0}
+#orcPdfArea .pf{display:flex;align-items:center;gap:6px;margin:5px 12px 3px;font-size:.74rem}
+#orcPdfArea .pf i{color:#0F5FB5;font-size:.74rem;width:14px;text-align:center}
+#orcPdfArea .pf strong{color:#003E7E;min-width:130px;font-weight:700}
+#orcPdfArea .pf span{border-bottom:1.5px solid #c8d6e8;flex:1;padding-bottom:2px;min-height:14px;color:#333}
+#orcPdfArea .pt{width:calc(100% - 24px);border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;border:1.5px solid #c8d6e8;margin:6px 12px 8px}
+#orcPdfArea .pt thead th{background:#003E7E;color:#fff;padding:6px 4px;font-size:.65rem;text-transform:uppercase;letter-spacing:.3px;font-weight:700;text-align:center}
+#orcPdfArea .pt thead th:first-child{text-align:left;padding-left:8px}
+#orcPdfArea .pt tbody td{padding:5px 4px;text-align:center;border-bottom:1px solid #e0e8f2;font-size:.7rem;background:rgba(255,255,255,.7)}
+#orcPdfArea .pt tbody td:first-child{text-align:left;padding-left:8px}
+#orcPdfArea .pt tbody tr:last-child td{border-bottom:none}
+#orcPdfArea .pt tbody tr:nth-child(even) td{background:#EBF1FA}
+#orcPdfArea .prc{background:rgba(255,255,255,.95);border:1.5px solid #c8d6e8;border-radius:8px;overflow:hidden;margin:6px 12px 8px}
+#orcPdfArea .prr{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-bottom:1px solid #e0e8f2;font-size:.74rem}
+#orcPdfArea .prr .lb{font-weight:600;color:#556}
+#orcPdfArea .prr .vl{font-weight:700;color:#003E7E;font-size:.76rem}
+#orcPdfArea .prf{background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:7px 10px;font-weight:800;font-size:.82rem}
+#orcPdfArea .pfs{background:rgba(255,255,255,.94);border:1.5px solid #c8d6e8;border-radius:10px;margin:0 14px 6px;position:relative;overflow:hidden}
+#orcPdfArea .pfs::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#003E7E,#0F5FB5)}
+#orcPdfArea .pfr{display:flex;align-items:center;gap:6px;padding:5px 12px 3px;font-size:.74rem}
+#orcPdfArea .pfr i{color:#0F5FB5;font-size:.74rem;width:14px;text-align:center}
+#orcPdfArea .pfr strong{color:#003E7E;min-width:115px;font-weight:700}
+#orcPdfArea .pfr span{border-bottom:1.5px solid #c8d6e8;flex:1;padding-bottom:2px;color:#333}
+#orcPdfArea .pib{margin:4px 14px;background:linear-gradient(135deg,#1a5e2a,#27ae60);border:2px solid #1a5e2a;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px}
+#orcPdfArea .pib i{font-size:.95rem;color:#fff;min-width:18px;text-align:center}
+#orcPdfArea .pib p{margin:0;font-size:.68rem;color:#fff;font-weight:600;line-height:1.25}
+#orcPdfArea .pib strong{color:#ffff99}
+#orcPdfArea .pft{background:linear-gradient(135deg,#003E7E,#0F5FB5);min-height:2.3cm;max-height:2.3cm;padding:6px 18px;color:#fff;margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:12px;overflow:hidden}
+#orcPdfArea .pft-txt{flex:1;text-align:center}
+#orcPdfArea .pft-txt p{margin:0;font-size:.82rem;line-height:1.35}
+#orcPdfArea .pft-txt em{font-family:Georgia,serif;font-size:.95rem;font-style:italic;font-weight:700}
+#orcPdfArea .pft-right{display:flex;flex-direction:row;align-items:center;gap:6px;flex-shrink:0}
+#orcPdfArea .pft-qr{background:#fff;border-radius:6px;padding:3px;display:flex;flex-direction:column;align-items:center;gap:1px}
+#orcPdfArea .pft-qr img{width:52px;height:52px;display:block}
+#orcPdfArea .pft-qr span{font-size:.45rem;color:#003E7E;font-weight:700;text-align:center;line-height:1.1}
+#orcPdfArea .pft-fone{font-size:.72rem;font-weight:700;color:#fff;display:flex;flex-direction:column;align-items:center;gap:3px;opacity:.95}
+#orcPdfArea .pft-fone i{font-size:1rem}
+
 </style>
 </head>
 <body>
@@ -294,6 +342,9 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
           <select id="dashMes" onchange="renderDashboard()" style="padding:10px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;min-width:210px;background:#fff">
             <option value="">Geral — todos os meses</option>
           </select>
+          <button onclick="baixarResumoExcel()" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#1b5e20,#2e7d32);color:#fff;border:none;border-radius:6px;padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 2px 8px rgba(27,94,32,0.3)" title="Baixar planilha Excel com todos os registros">
+            📥 Baixar Resumo
+          </button>
         </div>
       </div>
     </div>
@@ -305,11 +356,11 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
       <div class="stat-card purple"><div class="stat-label">Gestantes</div><div class="stat-value" id="vGestantes">0</div><div class="stat-sub">acompanhamento</div></div>
       <div class="stat-card orange"><div class="stat-label">Taxa de Conversão</div><div class="stat-value" id="vTaxaConversao">0%</div><div class="stat-sub">convertidas / total</div></div>
       <div class="stat-card red"><div class="stat-label">Com Prescrição Médica</div><div class="stat-value" id="vReceitaMedica">0</div><div class="stat-sub">contatos com receita</div></div>
-    </div>
-    <div class="stats-row" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
       <div class="stat-card green"><div class="stat-label">Tempo Médio até Venda</div><div class="stat-value" id="vTempoVenda" style="font-size:24px">—</div><div class="stat-sub">1º contato até venda convertida</div></div>
-      <div class="stat-card red"><div class="stat-label">Tempo Médio até Finalização</div><div class="stat-value" id="vTempoFinalizacao" style="font-size:24px">—</div><div class="stat-sub">1º contato até convertido/perdido</div></div>
       <div class="stat-card yellow"><div class="stat-label">Aguardando Agendamento</div><div class="stat-value" id="vAguardandoAgenda">0</div><div class="stat-sub">sem data para retorno</div></div>
+      <div class="stat-card green"><div class="stat-label">🎟️ Ticket Médio</div><div class="stat-value" id="vTicketMedio" style="font-size:22px">R$ —</div><div class="stat-sub">vendas convertidas</div></div>
+      <div class="stat-card purple"><div class="stat-label">💉 Itens por Venda</div><div class="stat-value" id="vItensMedio" style="font-size:28px">—</div><div class="stat-sub">média de vacinas/venda</div></div>
+      <div class="stat-card orange"><div class="stat-label">📅 Agendamentos</div><div class="stat-value" id="vQtdAgendamentos">0</div><div class="stat-sub">com data marcada</div></div>
     </div>
     <div class="panel"><div class="panel-header"><span>📌 Origem dos Contatos e Conversão por Canal</span></div>
       <div class="panel-body" id="dashOrigem"><div class="empty-state"><div class="icon">📭</div><p>Nenhum dado para demonstrar</p></div></div>
@@ -346,8 +397,7 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
             <div class="form-group"><label>Perfil do Cliente</label>
               <select id="fPerfil"><option value="">Selecione...</option><option value="Mãe/Gestante">Mãe / Gestante</option><option value="Idoso">Idoso</option><option value="Paciente Crônico">Paciente Crônico</option><option value="Vacinas">Vacinas</option><option value="Geral">Geral</option></select>
             </div>
-            <div class="form-group"><label>Produto de Interesse</label><input type="text" id="fProduto" placeholder="Ex: Vacinas, Enxoval..."></div>
-            <div class="form-group"><label>Valor Estimado (R$)</label><input type="text" id="fValor" placeholder="0,00" oninput="maskMoney(this)"></div>
+            <div class="form-group"><label>Vendedor(a)</label><input type="text" id="fVendedor" placeholder="Nome do vendedor"></div>
             <div class="form-group"><label>Status</label>
               <select id="fStatus" onchange="checkStatusPerdido(this,'fObsMotivo')"><option value="Novo Contato">Novo Contato</option><option value="Aguardando vacina em ruptura">Aguardando vacina em ruptura</option><option value="Em Negociação">Em Negociação</option><option value="Venda Convertida">Venda Convertida ✅</option><option value="Perdido">Perdido ❌</option></select>
             </div>
@@ -584,9 +634,66 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
 
   <!-- ===== IDENTIFICAÇÃO DE COMBOS ===== -->
   <div class="page" id="page-combos">
-    <div class="panel"><div class="panel-header"><span>🎯 Identificação de Combos</span><button class="btn btn-sm" style="background:rgba(255,255,255,0.2);color:#fff" onclick="renderCombos()">🔄</button></div>
-      <div class="panel-body" id="combosList"><div class="empty-state"><div class="icon">🎯</div><p>Em breve</p><p style="font-size:12px;color:var(--text-light)">Módulo em desenvolvimento</p></div></div>
+
+    <!-- FICHA DE COMBOS DE VACINAS -->
+
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header" style="display:flex;align-items:center;justify-content:space-between">
+        <span>📋 Ficha de Combos de Vacinas</span>
+        <button onclick="imprimirFicha()" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#b71c1c,#c62828);color:#fff;border:none;border-radius:6px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer">
+          📥 Baixar PDF
+        </button>
+      </div>
     </div>
+
+    <!-- FORMULÁRIO DE PREENCHIMENTO -->
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header"><span>✏️ Preencher Dados do Paciente</span></div>
+      <div class="panel-body" style="padding:18px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="form-group"><label>Paciente</label><input type="text" id="fPaciente" placeholder="Nome completo do paciente" oninput="fichaSync()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"></div>
+          <div class="form-group"><label>CPF do Paciente</label><input type="text" id="fCpfFicha" placeholder="000.000.000-00" oninput="maskCpf(this);fichaSync()" maxlength="14" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"></div>
+          <div class="form-group"><label>Responsável</label><input type="text" id="fResponsavelFicha" placeholder="Nome do responsável (se menor)" oninput="fichaSync()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"></div>
+          <div class="form-group"><label>Telefone</label><input type="tel" id="fTelefoneFicha" placeholder="(34) 99999-9999" oninput="maskPhone(this);fichaSync()" maxlength="15" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"></div>
+          <div class="form-group" style="grid-column:1/-1"><label>Endereço</label><input type="text" id="fEnderecoFicha" placeholder="Rua, nº, bairro, cidade" oninput="fichaSync()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"></div>
+          <div class="form-group"><label>Data de Nascimento</label><input type="date" id="fNascFicha" oninput="fichaSync()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"></div>
+          <div class="form-group"><label>Data da Compra</label><input type="date" id="fComprFicha" oninput="fichaSync()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"></div>
+          <div class="form-group"><label>Farmacêutico(a) Responsável</label><select id="fFarmFicha" oninput="fichaSync()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"><option value="">Selecione...</option></select></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABELA DE VACINAS -->
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header" style="display:flex;align-items:center;justify-content:space-between">
+        <span>💉 Vacinas</span>
+        <button onclick="fichaAddLinha()" style="background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:12px;font-weight:700">+ Linha</button>
+      </div>
+      <div class="panel-body" style="padding:14px 18px;overflow-x:auto">
+        <table id="fichaTabela" style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead>
+            <tr style="background:var(--navy);color:#fff">
+              <th style="padding:8px 10px;text-align:left;border:1px solid #ccc;min-width:200px">Vacina</th>
+              <th style="padding:8px 10px;text-align:center;border:1px solid #ccc;width:90px">Quantidade</th>
+              <th style="padding:8px 10px;text-align:center;border:1px solid #ccc;width:150px">Data Prevista Aplicação</th>
+              <th style="padding:8px 10px;text-align:center;border:1px solid #ccc;width:120px">Visto Aplicador</th>
+              <th style="padding:8px 10px;text-align:center;border:1px solid #ccc;width:130px">Data Aplicação</th>
+              <th style="padding:8px 6px;text-align:center;border:1px solid #ccc;width:36px">🗑</th>
+            </tr>
+          </thead>
+          <tbody id="fichaTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PRÉ-VISUALIZAÇÃO DA FICHA PARA IMPRESSÃO -->
+    <div class="panel">
+      <div class="panel-header"><span>👁 Pré-visualização da Ficha</span></div>
+      <div class="panel-body" style="padding:18px">
+        <div id="fichaPreview" style="background:#fff;border:1px solid #ccc;padding:20px;font-family:Arial,sans-serif;font-size:12px;max-width:900px;margin:0 auto"></div>
+      </div>
+    </div>
+  </div>
   </div>
 
   <!-- ===== ORÇAMENTO (IFRAME) ===== -->
@@ -643,10 +750,98 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
       <div class="panel-header"><span>💉 Orçamento — Sala de Vacinas</span></div>
       <div class="panel-body" style="padding:16px;background:var(--azl,#EBF1FA)">
 
+        <!-- Hidden fields for PDF -->
         <input type="hidden" id="orcNomeP">
-    <input type="hidden" id="orcTelP">
-    <input type="hidden" id="orcDataP">
+        <input type="hidden" id="orcTelP">
+        <input type="hidden" id="orcDataP">
 
+        <!-- DADOS DO PACIENTE -->
+        <div class="orc-card">
+          <div class="orc-ct"><i class="fa-solid fa-user"></i>Dados do Paciente</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
+            <div class="form-group" style="margin:0"><label>CPF</label><input type="text" id="orcPacCpf" placeholder="000.000.000-00" maxlength="14" oninput="maskCpf(this);orcBuscarPorCpfDados(this)"></div>
+            <div class="form-group" style="margin:0"><label>Nome Completo *</label><input type="text" id="orcPacNome" placeholder="Nome completo" oninput="document.getElementById('orcNomeP').value=this.value"></div>
+            <div class="form-group" style="margin:0"><label>Telefone *</label><input type="tel" id="orcPacTel" placeholder="(34) 99999-9999" maxlength="15" oninput="orcMaskTel(this);document.getElementById('orcTelP').value=this.value"></div>
+            <div class="form-group" style="margin:0"><label>Email</label><input type="email" id="orcPacEmail" placeholder="email@exemplo.com"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:8px">
+            <div class="form-group" style="margin:0"><label>Canal de Contato</label>
+              <select id="orcPacCanal">
+                <option value="">Selecione...</option>
+                <option>WhatsApp</option><option>Telefone</option>
+                <option>Presencial (Loja)</option><option>Instagram</option>
+                <option>Facebook</option><option>Indicação</option><option>Outro</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0"><label>Perfil do Cliente</label>
+              <select id="orcPacPerfil">
+                <option value="">Selecione...</option>
+                <option>Mãe/Gestante</option><option>Idoso</option>
+                <option>Paciente Crônico</option><option>Vacinas</option><option>Geral</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0"><label>Vendedor(a)</label><input type="text" id="orcPacVendedor" placeholder="Nome do vendedor"></div>
+            <div class="form-group" style="margin:0"><label>Farmacêutico(a)</label>
+              <select id="orcPacFarm" onchange="orcSelectFarm()">
+                <option value="">— Selecione —</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:8px">
+            <div class="form-group" style="margin:0"><label>Status</label>
+              <select id="orcPacStatus">
+                <option>Novo Contato</option>
+                <option>Em Negociação</option>
+                <option>Aguardando vacina em ruptura</option>
+                <option>Venda Convertida</option>
+                <option>Perdido</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0"><label>É Gestante?</label>
+              <select id="orcPacGestante" onchange="orcToggleGestante()">
+                <option>Não</option><option>Sim</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0"><label>Receita Médica?</label>
+              <select id="orcPacReceita" onchange="orcToggleReceita()">
+                <option>Não</option><option>Sim</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin:0"><label>Próximo Contato</label><input type="date" id="orcPacProximo"></div>
+          </div>
+          <div style="margin-top:8px">
+            <div class="form-group" style="margin:0"><label>Observações</label>
+              <textarea id="orcPacObs" placeholder="Anotações sobre o cliente..." style="resize:vertical;min-height:60px;padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;width:100%;font-family:inherit"></textarea>
+            </div>
+          </div>
+          <!-- Campos Gestante (expansível) -->
+          <div id="orcGestanteFields" style="display:none;margin-top:8px;background:#fff5fb;border:1.5px solid #e91e8c33;border-radius:8px;padding:12px">
+            <div style="font-size:12px;font-weight:700;color:#c2006e;margin-bottom:8px">🤰 Informações de Gestação</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div class="form-group" style="margin:0"><label>Data Prevista do Parto</label><input type="date" id="orcPacDataParto"></div>
+              <div class="form-group" style="margin:0"><label>Semana de Gestação</label><input type="number" id="orcPacSemana" min="1" max="42" placeholder="Ex: 24"></div>
+            </div>
+          </div>
+          <!-- Campos Receita Médica (expansível) -->
+          <div id="orcReceitaFields" style="display:none;margin-top:8px;background:#fff5f5;border:1.5px solid #dc354533;border-radius:8px;padding:12px">
+            <div style="font-size:12px;font-weight:700;color:#dc3545;margin-bottom:8px">📋 Dados da Receita Médica</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div class="form-group" style="margin:0"><label>Nome do Médico</label><input type="text" id="orcPacNomeMedico" placeholder="Nome completo do médico"></div>
+              <div class="form-group" style="margin:0"><label>Número do CRM</label><input type="text" id="orcPacCrmMedico" placeholder="Ex: CRM-MG 000000"></div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px
+          </div>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-primary btn-sm" onclick="orcSalvarPaciente()"><i class="fa-solid fa-floppy-disk"></i> Salvar / Atualizar Cliente</button>
+            <div id="orcPacStatus2" style="font-size:12px;color:var(--text-light);align-self:center"></div>
+          </div>
+          <div id="orcFarmInfo" style="display:none;margin-top:6px;font-size:12px;color:var(--navy);font-weight:600">
+            <i class="fa-solid fa-id-card" style="margin-right:4px"></i><span id="orcFarmNome"></span> — <span id="orcFarmCrf"></span>
+          </div>
+        </div>
+
+        <!-- TABELA DE VACINAS -->
         <div class="orc-card">
           <div class="orc-ct"><i class="fa-solid fa-syringe"></i>Vacinas</div>
           <div style="overflow-x:auto">
@@ -669,55 +864,9 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
             <button class="btn btn-sm" style="background:linear-gradient(135deg,#1a5e2a,#27ae60);color:#fff" onclick="orcOpenComboModal(6)"><i class="fa-solid fa-baby-carriage"></i> Combo 2 a 6 meses</button>
             <button class="btn btn-sm btn-outline" onclick="orcLimparTabela()" style="margin-left:auto">🗑 Limpar tudo</button>
           </div>
-
-          <!-- MODAL COMBO -->
-          <div id="orcComboModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center;padding:20px">
-            <div style="background:#fff;border-radius:12px;width:100%;max-width:820px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 32px rgba(0,0,0,.3)">
-              <!-- Header com abas -->
-              <div style="background:linear-gradient(135deg,#003E7E,#0F5FB5);padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
-                <div style="display:flex;gap:0;border-radius:8px;overflow:hidden;border:1.5px solid rgba(255,255,255,.3)">
-                  <button id="orcComboTab18" onclick="orcSwitchComboTab(18)"
-                    style="padding:7px 18px;font-size:.84rem;font-weight:700;border:none;cursor:pointer;background:rgba(255,255,255,.95);color:#003E7E;transition:all .2s">
-                    <i class="fa-solid fa-baby" style="margin-right:5px"></i>Combo 2 a 18 meses
-                  </button>
-                  <button id="orcComboTab6" onclick="orcSwitchComboTab(6)"
-                    style="padding:7px 18px;font-size:.84rem;font-weight:700;border:none;cursor:pointer;background:rgba(255,255,255,.2);color:#fff;transition:all .2s">
-                    <i class="fa-solid fa-baby-carriage" style="margin-right:5px"></i>Combo 2 a 6 meses
-                  </button>
-                </div>
-                <button onclick="orcCloseComboModal()" style="background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center">×</button>
-              </div>
-              <!-- Body -->
-              <div style="padding:16px 20px;overflow-y:auto;flex:1">
-                <div style="font-size:12px;color:#666;margin-bottom:10px">
-                  <i class="fa-solid fa-circle-info" style="color:#003E7E"></i>
-                  Configure as vacinas e quantidades do combo. Valores em branco serão preenchidos automaticamente da tabela de preços.
-                </div>
-                <table style="width:100%;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;border:1.5px solid #c8d6e8">
-                  <thead>
-                    <tr>
-                      <th style="background:#003E7E;color:#fff;padding:8px 10px;font-size:.72rem;text-transform:uppercase;letter-spacing:.3px;text-align:left">Tipo de Vacina</th>
-                      <th style="background:#003E7E;color:#fff;padding:8px 6px;font-size:.72rem;text-transform:uppercase;text-align:left;width:28%">Nome Comercial</th>
-                      <th style="background:#003E7E;color:#fff;padding:8px 6px;font-size:.72rem;text-transform:uppercase;text-align:center;width:60px">Qtd</th>
-                      <th style="background:#003E7E;color:#fff;padding:8px 6px;font-size:.72rem;text-transform:uppercase;text-align:center;width:100px">Valor Unit. (R$)</th>
-                      <th style="background:#003E7E;color:#fff;padding:8px 6px;font-size:.72rem;text-align:center;width:36px"></th>
-                    </tr>
-                  </thead>
-                  <tbody id="orcComboModalTbody"></tbody>
-                </table>
-                <button onclick="orcComboAddLinha()" class="btn btn-sm btn-outline" style="margin-top:8px;font-size:.82rem">
-                  <i class="fa-solid fa-plus"></i> Adicionar linha
-                </button>
-              </div>
-              <!-- Footer -->
-              <div style="padding:12px 20px;border-top:1px solid #e0e8f2;display:flex;justify-content:flex-end;gap:10px;background:#f8fafd">
-                <button onclick="orcCloseComboModal()" class="btn btn-outline">Cancelar</button>
-                <button onclick="orcApplyComboFromModal()" class="btn btn-primary"><i class="fa-solid fa-check"></i> Aplicar Combo na Tabela</button>
-              </div>
-            </div>
-          </div>
         </div>
 
+        <!-- RESUMO FINANCEIRO -->
         <div class="orc-card">
           <div class="orc-ct"><i class="fa-solid fa-hand-holding-dollar"></i>Resumo do Investimento</div>
           <div class="orc-resumo">
@@ -727,7 +876,7 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
           </div>
         </div>
 
-
+        <!-- INFO CARDS -->
         <div style="background:linear-gradient(135deg,#1a5e2a,#27ae60);border:2px solid #1a5e2a;border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:10px">
           <i class="fa-solid fa-house-chimney-medical" style="color:#fff;font-size:1.1rem"></i>
           <p style="margin:0;font-size:.85rem;color:#fff;font-weight:600">Aplicação domiciliar <strong style="color:#ffff99">GRATUITA</strong> para pacientes residentes em Ituiutaba/MG.</p>
@@ -737,6 +886,12 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
           <p style="margin:0;font-size:.85rem;color:#fff;font-weight:600">Este orçamento é válido por <strong style="color:#ffff99">7 (sete) dias</strong> a partir da data de emissão.</p>
         </div>
 
+        <!-- BOTÃO SALVAR ORÇAMENTO -->
+        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+          <button class="btn" onclick="orcSalvarOrcamento()" style="background:linear-gradient(135deg,var(--navy),var(--navy-light));color:#fff;padding:10px 24px;font-size:.95rem;font-weight:700;border-radius:8px">💾 SALVAR ORÇAMENTO</button>
+        </div>
+
+        <!-- BOTÕES GERAR -->
         <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
           <button class="btn btn-primary" onclick="orcGerarPDF()" style="padding:10px 24px;font-size:.95rem"><i class="fa-solid fa-file-pdf"></i> BAIXAR EM PDF</button>
           <button class="btn" style="background:linear-gradient(135deg,#1a5e2a,#27ae60);color:#fff;padding:10px 24px;font-size:.95rem" onclick="orcGerarJPG()"><i class="fa-solid fa-image"></i> BAIXAR EM JPG</button>
@@ -744,7 +899,54 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
 
       </div>
     </div>
-    <div id="orcPdfArea" style="position:absolute;left:-9999px;top:0;width:794px;background:#EBF1FA;font-family:'Segoe UI',Tahoma,sans-serif;color:#222"></div>
+
+    <!-- MODAL COMBO -->
+    <div id="orcComboModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center;padding:20px">
+      <div style="background:#fff;border-radius:12px;width:100%;max-width:860px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 32px rgba(0,0,0,.3)">
+        <div style="background:linear-gradient(135deg,#003E7E,#0F5FB5);padding:16px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;gap:0;border-radius:8px;overflow:hidden;border:1.5px solid rgba(255,255,255,.3)">
+            <button id="orcComboTab18" onclick="orcSwitchComboTab(18)" style="padding:7px 18px;font-size:.84rem;font-weight:700;border:none;cursor:pointer;background:rgba(255,255,255,.95);color:#003E7E">
+              <i class="fa-solid fa-baby" style="margin-right:5px"></i>Combo 2 a 18 meses
+            </button>
+            <button id="orcComboTab6" onclick="orcSwitchComboTab(6)" style="padding:7px 18px;font-size:.84rem;font-weight:700;border:none;cursor:pointer;background:rgba(255,255,255,.2);color:#fff">
+              <i class="fa-solid fa-baby-carriage" style="margin-right:5px"></i>Combo 2 a 6 meses
+            </button>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button onclick="orcSalvarComboNaPlanilha()" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;padding:5px 12px;cursor:pointer;font-size:.82rem;font-weight:600">
+              <i class="fa-solid fa-floppy-disk"></i> Salvar na Planilha
+            </button>
+            <button onclick="orcCloseComboModal()" style="background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer">×</button>
+          </div>
+        </div>
+        <div style="padding:16px 20px;overflow-y:auto;flex:1">
+          <div style="font-size:12px;color:#666;margin-bottom:10px;display:flex;align-items:center;gap:6px">
+            <i class="fa-solid fa-circle-info" style="color:#003E7E"></i>
+            Configure as vacinas e quantidades. Clique em "Salvar na Planilha" para persistir as alterações.
+          </div>
+          <table style="width:100%;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;border:1.5px solid #c8d6e8">
+            <thead>
+              <tr>
+                <th style="background:#003E7E;color:#fff;padding:8px 10px;font-size:.72rem;text-transform:uppercase;text-align:left">Tipo de Vacina</th>
+                <th style="background:#003E7E;color:#fff;padding:8px 6px;font-size:.72rem;text-transform:uppercase;text-align:left;width:28%">Nome Comercial</th>
+                <th style="background:#003E7E;color:#fff;padding:8px 6px;font-size:.72rem;text-transform:uppercase;text-align:center;width:60px">Qtd</th>
+                <th style="background:#003E7E;color:#fff;padding:8px 6px;font-size:.72rem;text-transform:uppercase;text-align:center;width:110px">Valor Unit. (R$)</th>
+                <th style="background:#003E7E;color:#fff;padding:8px 6px;font-size:.72rem;text-align:center;width:36px"></th>
+              </tr>
+            </thead>
+            <tbody id="orcComboModalTbody"></tbody>
+          </table>
+          <button onclick="orcComboAddLinha()" class="btn btn-sm btn-outline" style="margin-top:8px;font-size:.82rem">
+            <i class="fa-solid fa-plus"></i> Adicionar linha
+          </button>
+        </div>
+        <div style="padding:12px 20px;border-top:1px solid #e0e8f2;display:flex;justify-content:flex-end;gap:10px;background:#f8fafd">
+          <button onclick="orcCloseComboModal()" class="btn btn-outline">Cancelar</button>
+          <button onclick="orcApplyComboFromModal()" class="btn btn-primary"><i class="fa-solid fa-check"></i> Aplicar Combo na Tabela</button>
+        </div>
+      </div>
+    </div>
+    <div id="orcPdfArea"></div>
   </div>
 
 </div>
@@ -760,10 +962,10 @@ tr:hover{background:rgba(26,58,92,0.03)}tr:nth-child(even){background:#fafbfc}
 
 <script>
 
-let CLIENTS=[], API_URL='https://script.google.com/macros/s/AKfycbzSzlZ6VOjcnkSb6_tTA-GzCnSzbIvydjcjJaicjbaod-qFcWGt_OzGFogTTygSwEnK/exec';
+let CLIENTS=[], API_URL='https://script.google.com/macros/s/AKfycbwIKb-YAj7WMnJpRobz-eOGqMrjWVU3xCnzUGwdEadynLpTGbiIahJ-zPrkMCkHdCxWwg/exec';
 
 document.addEventListener('DOMContentLoaded',()=>{
-  API_URL='https://script.google.com/macros/s/AKfycbzSzlZ6VOjcnkSb6_tTA-GzCnSzbIvydjcjJaicjbaod-qFcWGt_OzGFogTTygSwEnK/exec';
+  API_URL='https://script.google.com/macros/s/AKfycbwIKb-YAj7WMnJpRobz-eOGqMrjWVU3xCnzUGwdEadynLpTGbiIahJ-zPrkMCkHdCxWwg/exec';
   localStorage.setItem('crm_api_url',API_URL);
   document.getElementById('apiUrl').value=API_URL;
   loadClients();loadConfig();
@@ -798,7 +1000,10 @@ function orcInit(){
       }).catch(()=>{orcFallbackVacinas();orcRenderFarm();});
   } else {orcFallbackVacinas();orcRenderFarm();}
   const h=new Date();
-  document.getElementById('orcDataP').value=h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0')+'-'+String(h.getDate()).padStart(2,'0');
+  const todayStr=h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0')+'-'+String(h.getDate()).padStart(2,'0');
+  document.getElementById('orcDataP').value=todayStr;
+  // Load combos from sheet
+  orcCarregarCombos();
   // orcTelP is now hidden (populated by client selection)
   orcAddLinha();
 }
@@ -845,7 +1050,7 @@ function orcFallbackVacinas(){
 }
 
 function orcRenderFarm(){
-  const sel=document.getElementById('orcFarmSel');if(!sel)return;
+  const sel=document.getElementById('orcPacFarm');if(!sel)return;
   const farm=(ORC_FARM_DATA&&ORC_FARM_DATA.length>0)?ORC_FARM_DATA:[
     {Nome:'Jéssica Cantoia Dorna',CRF:'CRF/MG 31.069'},
     {Nome:'Gisele de Oliveira Carvalho',CRF:'CRF/MG 53.663'}
@@ -859,7 +1064,7 @@ function orcRenderFarm(){
 }
 
 function orcSelectFarm(){
-  const sel=document.getElementById('orcFarmSel');
+  const sel=document.getElementById('orcPacFarm');
   const fi=document.getElementById('orcFarmInfo');
   if(!sel||sel.value===''){fi.style.display='none';return;}
   const opt=sel.options[sel.selectedIndex];
@@ -889,7 +1094,7 @@ function orcSelecionarCliente(id){
   document.getElementById('orcClienteSelecionadoBox').style.display='block';
   document.getElementById('orcNomeP').value=c['Nome']||'';
   document.getElementById('orcTelP').value=c['Telefone']||'';
-  // Reset CPF border on successful match
+  orcPreencherCamposPaciente(c);
   const cpfEl=document.getElementById('orcCpfInput');
   if(cpfEl&&(!cpfEl.value||cpfEl.style.borderColor==='rgb(227, 6, 19)'))cpfEl.style.border='1.5px solid #27ae60';
   toast('Cliente '+c['Nome']+' selecionado','success');
@@ -906,6 +1111,196 @@ function orcLimparCliente(){
 
 function orcNovoCliente(){document.getElementById('orcFormNovoCliente').style.display='block';document.getElementById('orcFNome').focus();}
 function orcCancelarNovo(){document.getElementById('orcFormNovoCliente').style.display='none';}
+
+// ── Máscara telefone campo orçamento ─────────────────────────────────────────
+function orcMaskTel(el){
+  var v=el.value.replace(/\D/g,'');
+  if(v.length>11)v=v.substring(0,11);
+  if(v.length>6)v='('+v.substring(0,2)+') '+v.substring(2,7)+'-'+v.substring(7);
+  else if(v.length>2)v='('+v.substring(0,2)+') '+v.substring(2);
+  else if(v.length>0)v='('+v;
+  el.value=v;
+}
+
+// ── Preencher campos do paciente a partir do cliente selecionado ──────────────
+function orcPreencherCamposPaciente(c){
+  if(!c)return;
+  document.getElementById('orcPacNome').value=c['Nome']||'';
+  document.getElementById('orcPacTel').value=c['Telefone']||'';
+  document.getElementById('orcPacCpf').value=c['CPF']||'';
+  document.getElementById('orcPacEmail').value=c['Email']||'';
+  document.getElementById('orcPacCanal').value=c['Canal Contato']||'';
+  document.getElementById('orcPacPerfil').value=c['Perfil']||'';
+  if(document.getElementById('orcPacVendedor'))document.getElementById('orcPacVendedor').value=c['Vendedor']||'';
+  document.getElementById('orcPacStatus').value=c['Status']||'Novo Contato';
+  document.getElementById('orcPacObs').value=''; // Limpar obs - novo orçamento, sem dados anteriores
+  // Gestante fields
+  var gSel=document.getElementById('orcPacGestante');
+  if(gSel){gSel.value=c['Gestante']||'Não';orcToggleGestante();}
+  if(c['Data Parto']){var dp=document.getElementById('orcPacDataParto');if(dp){try{var dps=c['Data Parto'];if(dps&&dps.includes('/')){var pts2=dps.split('/');dps=pts2[2]+'-'+pts2[1]+'-'+pts2[0];}dp.value=dps?dps.substring(0,10):'';}catch(e){}}}
+  if(c['Semana Gestação']){var sw=document.getElementById('orcPacSemana');if(sw)sw.value=c['Semana Gestação'];}
+  var rSel=document.getElementById('orcPacReceita');
+  if(rSel){rSel.value=c['Receita Médica']||'Não';orcToggleReceita();}
+  if(c['Nome Médico']){var nm2=document.getElementById('orcPacNomeMedico');if(nm2)nm2.value=c['Nome Médico'];}
+  if(c['CRM Médico']){var cm2=document.getElementById('orcPacCrmMedico');if(cm2)cm2.value=c['CRM Médico'];}
+  if(c['Próximo Contato']){
+    try{
+      var p=c['Próximo Contato'];
+      if(p.includes('/')){var pts=p.split('/');p=pts[2]+'-'+pts[1]+'-'+pts[0];}
+      document.getElementById('orcPacProximo').value=p.substring(0,10);
+    }catch(e){}
+  }
+  // Farmacêutico
+  var farmSel=document.getElementById('orcPacFarm');
+  if(farmSel&&c['Farmacêutico']){
+    for(var i=0;i<farmSel.options.length;i++){
+      if(farmSel.options[i].text===c['Farmacêutico']){farmSel.value=farmSel.options[i].value;break;}
+    }
+    orcSelectFarm();
+  }
+  // Hidden fields para PDF
+  document.getElementById('orcNomeP').value=c['Nome']||'';
+  document.getElementById('orcTelP').value=c['Telefone']||'';
+  document.getElementById('orcPacStatus2').textContent='✅ Cliente carregado: '+c['Nome'];
+}
+
+// ── Salvar / Atualizar cliente a partir do orçamento ─────────────────────────
+async function orcSalvarPaciente(){
+  var nome=document.getElementById('orcPacNome').value.trim();
+  var tel=document.getElementById('orcPacTel').value.trim();
+  if(!nome){toast('Informe o nome do paciente','error');return;}
+
+  var farmSel=document.getElementById('orcPacFarm');
+  var farmNome=farmSel.options[farmSel.selectedIndex]?farmSel.options[farmSel.selectedIndex].text:'';
+
+  var data={
+    'Nome':nome,'Telefone':tel,
+    'CPF':document.getElementById('orcPacCpf').value.trim(),
+    'Email':document.getElementById('orcPacEmail').value.trim(),
+    'Canal Contato':document.getElementById('orcPacCanal').value,
+    'Perfil':document.getElementById('orcPacPerfil').value,
+    'Vendedor':document.getElementById('orcPacVendedor')?document.getElementById('orcPacVendedor').value.trim():'',
+    'Status':document.getElementById('orcPacStatus').value||'Em Negociação',
+    'Gestante':document.getElementById('orcPacGestante').value,
+    'Receita Médica':document.getElementById('orcPacReceita').value,
+    'Próximo Contato':document.getElementById('orcPacProximo').value,
+    'Farmacêutico':farmNome,
+    'Observações':document.getElementById('orcPacObs').value,
+    'Gestante':document.getElementById('orcPacGestante').value,
+    'Receita Médica':document.getElementById('orcPacReceita').value,
+    'Data Parto':document.getElementById('orcPacDataParto')?document.getElementById('orcPacDataParto').value:'',
+    'Semana Gestação':document.getElementById('orcPacSemana')?document.getElementById('orcPacSemana').value:'',
+    'Nome Médico':document.getElementById('orcPacNomeMedico')?document.getElementById('orcPacNomeMedico').value:'',
+    'CRM Médico':document.getElementById('orcPacCrmMedico')?document.getElementById('orcPacCrmMedico').value:''
+  };
+
+  // Hidden para PDF
+  document.getElementById('orcNomeP').value=nome;
+  document.getElementById('orcTelP').value=tel;
+
+  showLoading(true);
+  try{
+    var res;
+    if(orcClienteAtual&&orcClienteAtual['ID']){
+      data.id=orcClienteAtual['ID'];
+      res=await apiCall('update',data);
+    }else{
+      res=await apiCall('add',data);
+    }
+    if(res.ok||res.success){
+      toast('Cliente salvo com sucesso!','success');
+      await loadClients();
+      if(!orcClienteAtual){
+        var nc=CLIENTS.find(function(x){return x['Nome']===nome&&x['Telefone']===tel;});
+        if(nc){orcClienteAtual=nc;}
+      }
+      document.getElementById('orcPacStatus2').textContent='✅ Salvo em '+new Date().toLocaleTimeString('pt-BR');
+    }else{toast(res.message||'Erro ao salvar','error');}
+  }catch(e){toast('Erro: '+e.message,'error');}
+  showLoading(false);
+}
+
+// ── Carregar combos da planilha ───────────────────────────────────────────────
+async function orcCarregarCombos(){
+  if(!API_URL)return;
+  try{
+    var r=await fetch(API_URL+'?action=getcombos&_t='+Date.now(),{cache:'no-store',redirect:'follow'});
+    var d=await r.json();
+    if(d.ok){
+      if(d.combo18&&d.combo18.length>0){
+        ORC_COMBO_EDIT[18]=d.combo18.map(function(row){
+          return{tipo:row['Tipo de Vacina']||'',nome:row['Nome Comercial']||'',qty:parseInt(row['Quantidade'])||1,preco:parseFloat(String(row['Valor Unitário']||'0').replace(',','.'))||0};
+        });
+      }
+      if(d.combo6&&d.combo6.length>0){
+        ORC_COMBO_EDIT[6]=d.combo6.map(function(row){
+          return{tipo:row['Tipo de Vacina']||'',nome:row['Nome Comercial']||'',qty:parseInt(row['Quantidade'])||1,preco:parseFloat(String(row['Valor Unitário']||'0').replace(',','.'))||0};
+        });
+      }
+    }
+  }catch(e){console.warn('Combos da planilha não carregados:',e);}
+}
+
+// ── Salvar combo na planilha ──────────────────────────────────────────────────
+async function orcSalvarComboNaPlanilha(){
+  var tipo=orcComboTabAtiva;
+  var items=orcGetComboEdit(tipo);
+  var action=tipo===18?'savecombo18':'savecombo6';
+  showLoading(true);
+  try{
+    var r=await apiCall(action,{items:items});
+    if(r.ok||r.success){toast('Combo salvo na planilha!','success');}
+    else{toast('Erro ao salvar: '+(r.message||''),'error');}
+  }catch(e){toast('Erro: '+e.message,'error');}
+  showLoading(false);
+}
+
+// ── Toggle Gestante ───────────────────────────────────────────────────────────
+function orcToggleGestante(){
+  var v=document.getElementById('orcPacGestante').value;
+  document.getElementById('orcGestanteFields').style.display=v==='Sim'?'block':'none';
+}
+
+// ── Toggle Receita Médica ─────────────────────────────────────────────────────
+function orcToggleReceita(){
+  var v=document.getElementById('orcPacReceita').value;
+  document.getElementById('orcReceitaFields').style.display=v==='Sim'?'block':'none';
+}
+
+// ── Gerar resumo do orçamento para Observações ────────────────────────────────
+function orcGerarResumoObs(){
+  var items=[];
+  document.querySelectorAll('#orcTbody tr').forEach(function(tr){
+    var sel=tr.querySelector('.orcSv');
+    var i=sel?parseInt(sel.value):-1;
+    if(!isNaN(i)&&i>=0&&ORC_VACINAS[i]){
+      var v=ORC_VACINAS[i];
+      var q=parseInt(tr.querySelector('.orcQi').value)||1;
+      var p=orcPv(tr.querySelector('.orcPi').value);
+      var d=parseFloat(tr.querySelector('.orcDi').value)||0;
+      var total=p*q*(1-d/100);
+      if(p>0) items.push(v.i+' ('+v.n+') x'+q+' = '+orcFm(total));
+    }
+  });
+  if(!items.length) return '';
+  var totalFinal=orcPv(document.getElementById('orcRFinal').textContent.replace('R$','').trim());
+  var resumo='📋 Orçamento Vacinas ('+new Date().toLocaleDateString('pt-BR')+'):\n';
+  resumo+=items.join('\n');
+  resumo+='\nTotal: '+orcFm(totalFinal);
+  return resumo;
+}
+
+// ── Auto-preencher Valor Estimado e Observações ───────────────────────────────
+function orcSyncValorEObs(){
+  // Observações = resumo do orçamento com vacinas e valores
+  var resumo=orcGerarResumoObs();
+  if(resumo){
+    var obsEl=document.getElementById('orcPacObs');
+    if(obsEl) obsEl.value=resumo;
+  }
+}
+
+
 
 // ── CPF busca automática ──────────────────────────────────────────────────────
 function orcBuscarPorCpf(el){
@@ -1074,7 +1469,7 @@ async function orcCadastrarCliente(){
   const email=document.getElementById('orcFEmail').value.trim();
   showLoading(true);
   try{
-    const res=await callAPI({action:'add','Nome':nome,'Telefone':tel,'CPF':cpf,'Email':email,'Status':'Em Negociação','Canal Contato':'Presencial (Loja)','Produto Interesse':'Vacinas'});
+    const res=await apiCall('add',{'Nome':nome,'Telefone':tel,'CPF':cpf,'Email':email,'Status':'Em Negociação','Canal Contato':'Presencial (Loja)','Produto Interesse':'Vacinas'});
     if(res.ok){
       toast('Cliente cadastrado!','success');
       await loadClients();
@@ -1138,6 +1533,9 @@ function orcCalcTotal(){
   document.getElementById('orcRTotal').textContent=orcFm(s);
   document.getElementById('orcRDesc').textContent='- '+orcFm(td);
   document.getElementById('orcRFinal').textContent=orcFm(s-td);
+
+  // Auto-sync valor e obs
+  if(document.getElementById('orcPacNome'))orcSyncValorEObs();
 }
 
 function orcApplyCombo(tipo){
@@ -1162,16 +1560,42 @@ function orcBuildPdf(){
   });
   let s=0,td=0;items.forEach(i=>{s+=i.b;td+=i.dv;});
   const fn=s-td;
-  const farmSel=document.getElementById('orcFarmSel');
+  const farmSel=document.getElementById('orcPacFarm');
   const farmOpt=farmSel.options[farmSel.selectedIndex];
   const fnn=farmSel.value?farmOpt.textContent:'___________________________';
   const fcc=farmSel.value?(farmOpt.dataset.crf||''):'';
-  const trHtml=items.map(i=>`<tr><td style="padding:5px 4px;text-align:left;border-bottom:1px solid #e0e8f2;font-size:.7rem;background:rgba(255,255,255,.7);padding-left:8px"><strong>${i.ind}</strong> <span style="font-size:.62rem;color:#777">(${i.nom})</span></td><td style="padding:5px 4px;text-align:center;border-bottom:1px solid #e0e8f2;font-size:.7rem;background:rgba(255,255,255,.7)">${i.q}</td><td style="padding:5px 4px;text-align:center;border-bottom:1px solid #e0e8f2;font-size:.7rem;background:rgba(255,255,255,.7)">${orcFm(i.u)}</td><td style="padding:5px 4px;text-align:center;border-bottom:1px solid #e0e8f2;font-size:.7rem;background:rgba(255,255,255,.7)">${i.dp}%</td><td style="padding:5px 4px;text-align:center;border-bottom:1px solid #e0e8f2;font-size:.7rem;background:rgba(255,255,255,.7)">${orcFm(i.dv)}</td><td style="padding:5px 4px;text-align:center;border-bottom:1px solid #e0e8f2;font-size:.7rem;font-weight:700;background:rgba(255,255,255,.7)">${orcFm(i.t)}</td></tr>`).join('');
-  const qrDiv=document.createElement('div');
-  new QRCode(qrDiv,{text:'https://wa.me/5534996453839',width:136,height:136,colorDark:'#003E7E',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
-  const qrSrc=qrDiv.querySelector('canvas')?qrDiv.querySelector('canvas').toDataURL('image/png'):(qrDiv.querySelector('img')?qrDiv.querySelector('img').src:'');
+  const trHtml=items.map(i=>'<tr><td><strong>'+i.ind+'</strong> <span style="font-size:.62rem;color:#777">('+i.nom+')</span></td><td>'+i.q+'</td><td>'+orcFm(i.u)+'</td><td>'+i.dp+'%</td><td>'+orcFm(i.dv)+'</td><td style="font-weight:700">'+orcFm(i.t)+'</td></tr>').join('');
+  var qrSrc='';
+  try{
+    var qrDiv=document.createElement('div');
+    new QRCode(qrDiv,{text:'https://wa.me/5534996453839',width:136,height:136,colorDark:'#003E7E',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
+    qrSrc=qrDiv.querySelector('canvas')?qrDiv.querySelector('canvas').toDataURL('image/png'):(qrDiv.querySelector('img')?qrDiv.querySelector('img').src:'');
+  }catch(qe){console.warn('QRCode não disponível:',qe);}
   const pa=document.getElementById('orcPdfArea');
-  pa.innerHTML=`<div style="background:#fff;text-align:center;padding:14px 20px 10px;display:flex;justify-content:center;align-items:center;gap:24px"><img src="${ORC_LV}" style="height:72px;object-fit:contain"><img src="${ORC_LF}" style="height:72px;object-fit:contain"></div><div style="background:linear-gradient(135deg,#003E7E,#0F5FB5);min-height:1.5cm;display:flex;flex-direction:column;justify-content:center;padding:8px 20px;text-align:center;color:#fff"><h1 style="font-size:1.5rem;font-weight:800;margin:0;letter-spacing:2px">ORÇAMENTO</h1><p style="font-size:.82rem;margin:3px 0 0;opacity:.78">Sala de Vacinas Farmácias Cruzeiro</p></div><div style="background:rgba(255,255,255,.94);border:1.5px solid #c8d6e8;border-radius:10px;box-shadow:0 3px 14px rgba(0,62,126,.08);margin:8px 14px;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#003E7E,#0F5FB5)"></div><div style="display:flex;align-items:center;gap:7px;font-weight:700;font-size:.78rem;color:#003E7E;padding:9px 12px 6px;border-bottom:1px solid #e0e8f2">Dados do Paciente</div><div style="display:flex;align-items:center;gap:6px;margin:5px 12px 3px;font-size:.74rem"><strong style="color:#003E7E;min-width:130px;font-weight:700">NOME DO PACIENTE:</strong><span style="border-bottom:1.5px solid #c8d6e8;flex:1;padding-bottom:2px;color:#333">${nm}</span></div><div style="display:flex;align-items:center;gap:6px;margin:5px 12px 8px;font-size:.74rem"><strong style="color:#003E7E;min-width:130px;font-weight:700">TELEFONE:</strong><span style="border-bottom:1.5px solid #c8d6e8;flex:1;padding-bottom:2px;color:#333">${tl}</span></div></div><div style="background:rgba(255,255,255,.94);border:1.5px solid #c8d6e8;border-radius:10px;box-shadow:0 3px 14px rgba(0,62,126,.08);margin:6px 14px;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#003E7E,#0F5FB5)"></div><div style="display:flex;align-items:center;gap:7px;font-weight:700;font-size:.78rem;color:#003E7E;padding:9px 12px 6px;border-bottom:1px solid #e0e8f2">Vacinas</div><table style="width:calc(100% - 24px);border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;border:1.5px solid #c8d6e8;margin:6px 12px 8px"><thead><tr><th style="background:#003E7E;color:#fff;padding:6px 4px;font-size:.65rem;text-transform:uppercase;letter-spacing:.3px;font-weight:700;text-align:left;padding-left:8px">Vacina</th><th style="background:#003E7E;color:#fff;padding:6px 4px;font-size:.65rem;text-align:center">Qtd</th><th style="background:#003E7E;color:#fff;padding:6px 4px;font-size:.65rem;text-align:center">Valor Unit.</th><th style="background:#003E7E;color:#fff;padding:6px 4px;font-size:.65rem;text-align:center">Desc.%</th><th style="background:#003E7E;color:#fff;padding:6px 4px;font-size:.65rem;text-align:center">Val. Desc.</th><th style="background:#003E7E;color:#fff;padding:6px 4px;font-size:.65rem;text-align:center">Valor Total</th></tr></thead><tbody>${trHtml}</tbody></table></div><div style="background:rgba(255,255,255,.94);border:1.5px solid #c8d6e8;border-radius:10px;box-shadow:0 3px 14px rgba(0,62,126,.08);margin:6px 14px;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#003E7E,#0F5FB5)"></div><div style="padding:9px 12px 6px;border-bottom:1px solid #e0e8f2;font-weight:700;font-size:.78rem;color:#003E7E">Resumo do Investimento</div><div style="background:rgba(255,255,255,.95);border:1.5px solid #c8d6e8;border-radius:8px;overflow:hidden;margin:6px 12px 8px"><div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-bottom:1px solid #e0e8f2;font-size:.74rem"><span style="font-weight:600;color:#556">VALOR TOTAL:</span><span style="font-weight:700;color:#003E7E;font-size:.76rem">${orcFm(s)}</span></div>${td>0?`<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-bottom:1px solid #e0e8f2;font-size:.74rem"><span style="font-weight:600;color:#556">VOCÊ ESTÁ ECONOMIZANDO:</span><span style="font-weight:700;color:#27ae60;font-size:.76rem">- ${orcFm(td)}</span></div>`:''}<div style="background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:7px 10px;font-weight:800;font-size:.82rem"><span>INVESTIMENTO TOTAL:</span><span>${orcFm(fn)}</span></div></div></div><div style="background:rgba(255,255,255,.94);border:1.5px solid #c8d6e8;border-radius:10px;margin:0 14px 6px;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#003E7E,#0F5FB5)"></div><div style="padding:9px 12px 6px;border-bottom:1px solid #e0e8f2;font-weight:700;font-size:.78rem;color:#003E7E">Farmacêutico(a) Responsável</div><div style="display:flex;align-items:center;gap:6px;padding:5px 12px 8px;font-size:.74rem"><strong style="color:#003E7E;min-width:115px;font-weight:700">FARMACÊUTICO(A):</strong><span style="border-bottom:1.5px solid #c8d6e8;flex:1;padding-bottom:2px;color:#333">${fnn}${fcc?' &nbsp;|&nbsp; '+fcc:''}</span></div></div><div style="margin:4px 14px;background:linear-gradient(135deg,#1a5e2a,#27ae60);border:2px solid #1a5e2a;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px"><p style="margin:0;font-size:.68rem;color:#fff;font-weight:600;line-height:1.25">Aplicação domiciliar <strong style="color:#ffff99">GRATUITA</strong> para pacientes residentes em Ituiutaba/MG.</p></div><div style="margin:4px 14px;background:linear-gradient(135deg,#1a5e2a,#27ae60);border:2px solid #1a5e2a;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px"><p style="margin:0;font-size:.68rem;color:#fff;font-weight:600;line-height:1.25">Parcele suas vacinas em até <strong style="color:#ffff99">10x sem juros</strong> no cartão de crédito! Consulte condições.</p></div><div style="margin:4px 14px 6px;background:linear-gradient(135deg,#1a5e2a,#27ae60);border:2px solid #1a5e2a;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px"><p style="margin:0;font-size:.68rem;color:#fff;font-weight:600;line-height:1.25"><strong style="color:#ffff99">Oferta válida por 7 dias.</strong> &nbsp;|&nbsp; <strong>Data de Emissão:</strong> ${dt}</p></div><div style="background:linear-gradient(135deg,#003E7E,#0F5FB5);min-height:2.3cm;max-height:2.3cm;padding:6px 18px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;overflow:hidden"><div style="flex:1;text-align:center"><p style="margin:0;font-size:.82rem;line-height:1.35">Sua saúde e a de quem você ama</p><p style="margin:0;font-family:Georgia,serif;font-size:.95rem;font-style:italic;font-weight:700">merecem essa proteção!</p></div><div style="display:flex;flex-direction:row;align-items:center;gap:6px;flex-shrink:0"><div style="font-size:.72rem;font-weight:700;color:#fff;display:flex;flex-direction:column;align-items:center;gap:3px"><span>(34) 9 9645-3839</span></div>${qrSrc?`<div style="background:#fff;border-radius:6px;padding:3px;display:flex;flex-direction:column;align-items:center;gap:1px"><img src="${qrSrc}" style="width:52px;height:52px;display:block"><span style="font-size:.45rem;color:#003E7E;font-weight:700;text-align:center;line-height:1.1">Escanear para<br>WhatsApp</span></div>`:''}</div></div>`;
+  pa.innerHTML=
+    '<div class="pht"><img src="'+ORC_LV+'"><img src="'+ORC_LF+'"></div>'+
+    '<div class="phb"><h1>ORÇAMENTO</h1><p>Sala de Vacinas Farmácias Cruzeiro</p></div>'+
+    '<div class="pcd" style="padding-bottom:8px"><div class="pct"><i class="fa-solid fa-user"></i>Dados do Paciente</div>'+
+    '<div class="pf"><i class="fa-solid fa-user"></i><strong>NOME DO PACIENTE:</strong><span>'+nm+'</span></div>'+
+    '<div class="pf"><i class="fa-solid fa-phone"></i><strong>TELEFONE:</strong><span>'+tl+'</span></div></div>'+
+    '<div class="pcd" style="padding-bottom:8px"><div class="pct"><i class="fa-solid fa-syringe"></i>Vacinas</div>'+
+    '<table class="pt"><thead><tr><th>Vacina</th><th>Qtd</th><th>Valor Unit.</th><th>Desc.%</th><th>Valor Desc.</th><th>Valor Total</th></tr></thead><tbody>'+trHtml+'</tbody></table></div>'+
+    '<div class="pcd" style="padding-bottom:8px"><div class="pct"><i class="fa-solid fa-hand-holding-dollar"></i>Resumo do Investimento</div>'+
+    '<div class="prc">'+
+    '<div class="prr"><span class="lb">VALOR TOTAL:</span><span class="vl">'+orcFm(s)+'</span></div>'+
+    (td>0?'<div class="prr"><span class="lb">VOCÊ ESTÁ ECONOMIZANDO:</span><span class="vl" style="color:#27ae60">- '+orcFm(td)+'</span></div>':'')+
+    '<div class="prf"><span>INVESTIMENTO TOTAL:</span><span>'+orcFm(fn)+'</span></div></div></div>'+
+    '<div class="pfs" style="padding-bottom:6px"><div class="pct" style="border-bottom:1px solid #e0e8f2"><i class="fa-solid fa-user-doctor"></i>Farmacêutico(a) Responsável</div>'+
+    '<div class="pfr"><i class="fa-solid fa-user-nurse"></i><strong>FARMACÊUTICO(A):</strong><span>'+fnn+(fcc?' &nbsp;|&nbsp; '+fcc:'')+'</span></div></div>'+
+    '<div class="pib"><i class="fa-solid fa-house-chimney-medical"></i><p>Aplicação domiciliar <strong>GRATUITA</strong> para pacientes residentes em Ituiutaba/MG.</p></div>'+
+    '<div class="pib" style="margin-top:4px"><i class="fa-solid fa-credit-card"></i><p>Parcele suas vacinas em até <strong>10x sem juros</strong> no cartão de crédito! Consulte condições.</p></div>'+
+    '<div class="pib" style="margin-top:4px"><i class="fa-solid fa-calendar-check"></i><p><strong>Oferta válida por 7 dias.</strong> &nbsp;|&nbsp; <strong>Data de Emissão:</strong> '+dt+'</p></div>'+
+    '<div class="pft">'+
+    '<div class="pft-txt"><p>Sua saúde e a de quem você ama</p><p><em>merecem essa proteção!</em></p></div>'+
+    '<div class="pft-right">'+
+    '<div class="pft-fone"><i class="fa-brands fa-whatsapp"></i><span>(34) 9 9645-3839</span></div>'+
+    (qrSrc?'<div class="pft-qr"><img src="'+qrSrc+'"><span>Escanear para<br>WhatsApp</span></div>':'')+
+    '</div></div>';
   pa.style.left='0';pa.style.position='fixed';pa.style.zIndex='99999';
   return {pa,dt};
 }
@@ -1184,45 +1608,108 @@ function orcFileName(dt,ext){
 }
 
 function orcRenderCanvas(cb){
-  const info=orcBuildPdf();
-  setTimeout(()=>{
-    html2canvas(info.pa,{scale:2,useCORS:true,allowTaint:true,backgroundColor:'#ffffff',width:794,windowWidth:794,logging:false})
-      .then(c=>{info.pa.style.left='-9999px';info.pa.style.position='absolute';info.pa.style.zIndex='';cb(c,info.dt);})
-      .catch(e=>{info.pa.style.left='-9999px';info.pa.style.position='absolute';info.pa.style.zIndex='';alert('Erro ao gerar: '+e.message);});
-  },300);
+  var info;
+  try{
+    info=orcBuildPdf();
+  }catch(e){
+    toast('Erro ao montar orçamento: '+e.message,'error');
+    console.error('orcBuildPdf error:',e);
+    return;
+  }
+  setTimeout(function(){
+    try{
+      html2canvas(info.pa,{scale:2,useCORS:true,allowTaint:true,backgroundColor:'#ffffff',width:794,windowWidth:794,logging:false})
+        .then(function(c){
+          info.pa.style.left='-9999px';info.pa.style.position='absolute';info.pa.style.zIndex='';
+          try{ cb(c,info.dt); }catch(e2){ toast('Erro no download: '+e2.message,'error');console.error(e2); }
+        })
+        .catch(function(e){
+          info.pa.style.left='-9999px';info.pa.style.position='absolute';info.pa.style.zIndex='';
+          toast('Erro html2canvas: '+e.message,'error');
+          console.error('html2canvas error:',e);
+        });
+    }catch(e3){
+      toast('Erro ao iniciar renderização: '+e3.message,'error');
+      console.error('render init error:',e3);
+    }
+  },600);
 }
 
 async function orcSalvarNegociacao(){
   if(!orcClienteAtual)return;
   try{
-    const res=await callAPI({action:'update',id:orcClienteAtual['ID'],'Status':'Em Negociação','Produto Interesse':'Vacinas'});
-    if(res.ok)await loadClients();
+    await orcSalvarPaciente();
   }catch(e){console.warn('Erro ao salvar negociação:',e);}
 }
 
+// ── Salvar Orçamento (botão dedicado) ────────────────────────────────────────
+async function orcSalvarOrcamento(){
+  orcSyncValorEObs();
+  var nome=document.getElementById('orcPacNome').value.trim();
+  if(!nome){toast('Informe o nome do paciente para salvar','error');return;}
+  document.getElementById('orcNomeP').value=nome;
+  document.getElementById('orcTelP').value=document.getElementById('orcPacTel').value.trim();
+  try{
+    await orcSalvarPaciente();
+    toast('✅ Orçamento salvo! Dados averbados nas oportunidades.','success');
+  }catch(e){toast('Erro ao salvar orçamento: '+e.message,'error');}
+}
+
+// ── Auto-buscar CPF nos Dados do Paciente ────────────────────────────────────
+function orcBuscarPorCpfDados(el){
+  var raw=el.value.replace(/\D/g,'');
+  if(raw.length===11){
+    var match=CLIENTS.find(function(c){return (c['CPF']||'').replace(/\D/g,'')===raw;});
+    if(match){
+      orcSelecionarCliente(match['ID']);
+      toast('✅ Cliente encontrado: '+match['Nome'],'success');
+    }
+  }
+}
+
 function orcGerarPDF(){
-  if(!document.getElementById('orcNomeP').value.trim()){toast('Informe o nome do paciente','error');return;}
-  orcSalvarNegociacao().then(()=>{
-    orcRenderCanvas(function(c,dt){
-      const pdf=new window.jspdf.jsPDF('p','mm','a4');
-      const pW=210,pH=297,iW=pW,iH=(c.height*iW)/c.width;
-      let fw=iW,fh=iH;if(fh>pH){const r=pH/fh;fh=pH;fw*=r;}
+  orcSyncValorEObs();
+  var _nm=document.getElementById('orcPacNome').value.trim()||document.getElementById('orcNomeP').value.trim();
+  if(!_nm){toast('Informe o nome do paciente','error');return;}
+  document.getElementById('orcNomeP').value=_nm;
+  document.getElementById('orcTelP').value=document.getElementById('orcPacTel').value.trim()||'';
+  // Verificar bibliotecas
+  if(typeof html2canvas==='undefined'){toast('Erro: html2canvas não carregou. Recarregue a página.','error');return;}
+  if(typeof window.jspdf==='undefined'){toast('Erro: jsPDF não carregou. Recarregue a página.','error');return;}
+  toast('⏳ Gerando PDF...','info');
+  orcRenderCanvas(function(c,dt){
+    try{
+      var pdf=new window.jspdf.jsPDF('p','mm','a4');
+      var pW=210,pH=297,iW=pW,iH=(c.height*iW)/c.width;
+      var fw=iW,fh=iH;if(fh>pH){var r=pH/fh;fh=pH;fw*=r;}
       pdf.addImage(c.toDataURL('image/jpeg',.92),'JPEG',(pW-fw)/2,0,fw,fh);
       pdf.save(orcFileName(dt,'pdf'));
-      toast('PDF gerado! Redirecionando para Oportunidades...','success');
-      setTimeout(()=>switchTab('followup'),2000);
-    });
+      toast('✅ PDF baixado!','success');
+    }catch(e){toast('Erro PDF: '+e.message,'error');console.error('PDF error:',e);}
+    orcSalvarNegociacao();
   });
 }
 
 function orcGerarJPG(){
-  if(!document.getElementById('orcNomeP').value.trim()){toast('Informe o nome do paciente','error');return;}
-  orcSalvarNegociacao().then(()=>{
-    orcRenderCanvas(function(c,dt){
-      const link=document.createElement('a');link.download=orcFileName(dt,'jpg');link.href=c.toDataURL('image/jpeg',0.92);link.click();
-      toast('JPG gerado! Redirecionando para Oportunidades...','success');
-      setTimeout(()=>switchTab('followup'),2000);
-    });
+  orcSyncValorEObs();
+  var _nm=document.getElementById('orcPacNome').value.trim()||document.getElementById('orcNomeP').value.trim();
+  if(!_nm){toast('Informe o nome do paciente','error');return;}
+  document.getElementById('orcNomeP').value=_nm;
+  document.getElementById('orcTelP').value=document.getElementById('orcPacTel').value.trim()||'';
+  if(typeof html2canvas==='undefined'){toast('Erro: html2canvas não carregou. Recarregue a página.','error');return;}
+  toast('⏳ Gerando JPG...','info');
+  orcRenderCanvas(function(c,dt){
+    try{
+      var dataUrl=c.toDataURL('image/jpeg',0.92);
+      var link=document.createElement('a');
+      link.download=orcFileName(dt,'jpg');
+      link.href=dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      toast('✅ JPG baixado!','success');
+    }catch(e){toast('Erro JPG: '+e.message,'error');console.error('JPG error:',e);}
+    orcSalvarNegociacao();
   });
 }
 
@@ -1351,9 +1838,26 @@ async function loadConfig(){
     // Usar apiCall para evitar problemas de CORS/redirect do Apps Script
     const data=await apiCall('getConfig');
     if(data&&data.success){
-      if(data.farmaceuticos){populateSelects('.sel-farmaceutico',data.farmaceuticos);ORC_FARM_DATA=data.farmaceuticos;orcRenderFarm();}
+      if(data.farmaceuticos){
+        populateSelects('.sel-farmaceutico',data.farmaceuticos);
+        ORC_FARM_DATA=data.farmaceuticos;
+        orcRenderFarm();
+        // Populate orcamento farmaceutico select
+        var orcFarmSel=document.getElementById('orcPacFarm');
+        if(orcFarmSel){
+          orcFarmSel.innerHTML='<option value="">— Selecione —</option>';
+          data.farmaceuticos.forEach(function(f,i){
+            var o=document.createElement('option');
+            o.value=i;
+            o.textContent=f.Nome||f.nome||'';
+            o.dataset.crf=f.CRF||f.crf||'';
+            orcFarmSel.appendChild(o);
+          });
+        }
+      }
       // Inserir clínicas da planilha no select de Local de Atendimento
       if(data.clinicas&&data.clinicas.length){
+        _vcClinicasData=data.clinicas;  // Guardar para modal Venda Convertida
         const sel=document.getElementById('aLocal');
         if(sel){
           // Remover opções antigas de clínica (se houver)
@@ -1373,6 +1877,16 @@ async function loadConfig(){
       }
     }
   }catch(e){console.log('Config load:',e);}
+  // Preload vacinas para modal Venda Convertida (se ainda não carregadas)
+  if(ORC_VACINAS.length===0&&API_URL){
+    try{
+      const vr=await fetch(API_URL+'?action=getvacinas&_t='+Date.now(),{cache:'no-store',redirect:'follow'});
+      const vd=await vr.json();
+      if(vd.ok&&vd.data&&vd.data.length>0){
+        ORC_VACINAS=vd.data.map(function(v){return{i:v['Tipo']||'',n:v['Nome Comercial']||'',c:v['Código']||'',p:parseFloat(String(v['Valor']||'0').replace(',','.'))||0};});
+      }
+    }catch(e2){console.log('Vacinas preload:',e2);}
+  }
 }
 
 function onLocalChange(val){
@@ -1393,7 +1907,8 @@ function populateSelects(selector,items){
     sel.innerHTML='<option value="">Selecione...</option>';
     items.forEach(item=>{
       const opt=document.createElement('option');
-      opt.value=item;opt.textContent=item;
+      const nome=typeof item==='string'?item:(item.Nome||item.nome||String(item));
+      opt.value=nome;opt.textContent=nome;
       sel.appendChild(opt);
     });
     if(val)sel.value=val;
@@ -1408,8 +1923,8 @@ async function salvarCliente(e){
   const data={
     cpf:$('fCpf')?$('fCpf').value.trim():'',
     nome:$('fNome').value.trim(),telefone:$('fTelefone').value.trim(),email:$('fEmail').value.trim(),
-    canalContato:$('fCanal').value,perfil:$('fPerfil').value,produtoInteresse:$('fProduto').value.trim(),
-    valorEstimado:$('fValor').value.trim(),status:$('fStatus').value||'Novo Contato',
+    canalContato:$('fCanal').value,perfil:$('fPerfil').value,
+    vendedor:$('fVendedor')?$('fVendedor').value.trim():'',status:$('fStatus').value||'Novo Contato',
     gestante:$('fGestante').value||'Não',dataParto:$('fDataParto').value,semanaGestacao:$('fSemana').value,
     receitaMedica:$('fReceitaMedica').value||'Não',nomeMedico:$('fNomeMedico').value.trim(),crmMedico:$('fCrmMedico').value.trim(),
     proximoContato:$('fProxContato').value,observacoes:$('fObs').value.trim(),
@@ -1421,8 +1936,8 @@ async function salvarCliente(e){
   const tempId='TEMP-'+Date.now();
   const tempClient={
     'ID':tempId,'Data Cadastro':dataCadastro,'CPF':data.cpf,'Nome':data.nome,'Telefone':data.telefone,'Email':data.email,
-    'Canal Contato':data.canalContato,'Perfil':data.perfil,'Produto Interesse':data.produtoInteresse,
-    'Valor Estimado':data.valorEstimado,'Status':data.status,'Gestante':data.gestante,
+    'Canal Contato':data.canalContato,'Perfil':data.perfil,'Vendedor':data.vendedor,
+    'Status':data.status,'Gestante':data.gestante,
     'Receita Médica':data.receitaMedica,'Nome Médico':data.nomeMedico,'CRM Médico':data.crmMedico,
     'Próximo Contato':data.proximoContato,'Farmacêutico':data.farmaceutico,'Observações':data.observacoes,
     'Data Parto':data.dataParto,'Semana Gestação':data.semanaGestacao,
@@ -1476,12 +1991,14 @@ function buscarCpfAgenda(){
 async function salvarAgenda(e){
   e.preventDefault();
   const dom=$('aDomicilio').checked;
+  const _aLocalVal=$('aLocal').value||(dom?'Domicílio':'');
+  const _aClinNome=_aLocalVal.startsWith('Clínica:')?_aLocalVal.replace('Clínica:','').trim():'';
   const data={
     cpf:$('aCpf').value.trim(),
     nome:$('aNome').value.trim(),
     telefone:$('aTelefone').value.trim(),
     responsavel:$('aResponsavel').value.trim(),
-    local:$('aLocal').value||(dom?'Domicílio':''),
+    local:_aLocalVal,
     domicilio:dom?'Sim':'Não',
     proximoContato:$('aData').value,
     horario:$('aHorario').value,
@@ -1489,19 +2006,45 @@ async function salvarAgenda(e){
     produtoInteresse:$('aProduto').value.trim(),
     observacoes:$('aObs').value.trim(),
     farmaceutico:$('aFarmaceutico').value,
-    clinica:'',
+    clinica:_aClinNome,
+    vendedor:$('fVendedor')?$('fVendedor').value.trim():'',
     status:'Novo Contato'
   };
   if(!data.nome){toast('Informe o nome do cliente.','error');return false;}
-  toast('Salvando agendamento na planilha...','info');
-  const r=await apiCall('add',data);
-  if(r&&r.success){
+  if(_agendaEditId){
+    // MODO EDIÇÃO: atualizar agendamento existente
+    const editId=_agendaEditId;
+    const changes={
+      'Responsável':data.responsavel,'Local':data.local,'Domicílio':data.domicilio,
+      'Próximo Contato':data.proximoContato,'Horário':data.horario,'Endereço':data.endereco,
+      'Produto Interesse':data.produtoInteresse,'Observações':data.observacoes,'Farmacêutico':data.farmaceutico
+    };
+    updateLocal(editId,changes);
+    toast('Salvando edição na planilha...','info');
+    const r=await apiCall('update',{id:editId,...data});
+    if(r&&r.success){
+      toast('✅ Agendamento atualizado!','success');
+      await loadClients(true);
+    }else{
+      toast('❌ Erro ao salvar: '+(r&&r.error?r.error:'erro desconhecido'),'error');
+      await loadClients(true);
+    }
+    _agendaEditId=null;
     $('formAgenda').reset();$('cpfFoundAgenda').classList.remove('show');
+    _resetPainelAgendaHeader();
     toggleFormAgenda();
-    toast('✅ Agendado e salvo na planilha!','success');
-    await loadClients(true);
   }else{
-    toast('❌ Não salvou agendamento: '+(r&&r.error?r.error:'erro desconhecido'),'error');
+    // MODO NOVO AGENDAMENTO
+    toast('Salvando agendamento na planilha...','info');
+    const r=await apiCall('add',data);
+    if(r&&r.success){
+      $('formAgenda').reset();$('cpfFoundAgenda').classList.remove('show');
+      toggleFormAgenda();
+      toast('✅ Agendado e salvo na planilha!','success');
+      await loadClients(true);
+    }else{
+      toast('❌ Não salvou agendamento: '+(r&&r.error?r.error:'erro desconhecido'),'error');
+    }
   }
   return false;
 }
@@ -1536,39 +2079,122 @@ function salvarVendaConvertidaContato(){
   if(!id)return;
   const notaEl=document.getElementById('contatoNota');
   const proxEl=document.getElementById('contatoProxData');
-  const nota=(notaEl&&notaEl.value.trim())?notaEl.value.trim():'✅ Venda convertida';
+  const nota=(notaEl&&notaEl.value.trim())?notaEl.value.trim():'';
   const prox=proxEl?proxEl.value:'';
-  const c=CLIENTS.find(x=>x['ID']===id);
-  const now=new Date();
-  const nowStr=now.toLocaleDateString('pt-BR')+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-  const hist=(c?c['Histórico Contatos']||'':'');
-  const novoHist=hist+(hist?'\n':'')+nowStr+' - '+nota;
-  const changes={'Status':'Venda Convertida','Histórico Contatos':novoHist,'Último Contato':nowStr};
-  if(prox)changes['Próximo Contato']=prox;
-  updateLocal(id,changes);
   fecharModalContato();
-  toast('✅ Venda convertida salva!','success');
-  showVendaConvertidaCelebration(c?c['Nome']:'');
-  apiCall('update',{id,novoContato:nota,status:'Venda Convertida',proximoContato:prox||''}).then(r=>{
-    if(!r||!r.success){toast('Erro ao sincronizar venda — reconectando...','error');loadClients(true);}
-  });
+  abrirModalVendaConvertida(id,nota,prox);
 }
 
 // ===== UPDATE/DELETE =====
 async function updateStatus(id,s){
+  if(s==='Perdido'){
+    pedirMotivoPerdido(id,async function(cid,motivo){
+      const c=CLIENTS.find(x=>x['ID']===cid);
+      const obsAtual=c?c['Observações']||'':'';
+      const obsNova=(obsAtual?obsAtual+'\n':'')+'❌ Motivo da perda: '+motivo;
+      const now=new Date();
+      const nowStr=now.toLocaleDateString('pt-BR')+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+      updateLocal(cid,{'Status':'Perdido','Observações':obsNova,'Último Contato':nowStr});
+      toast('Salvando perdido na planilha...','info');
+      const r=await apiCall('update',{id:cid,status:'Perdido',observacoes:obsNova,novoContato:'Motivo da perda: '+motivo});
+      if(r&&r.success){toast('✅ Status Perdido salvo na planilha!','success');await loadClients(true);} 
+      else {toast('❌ Não salvou status: '+(r&&r.error?r.error:'erro desconhecido'),'error');await loadClients(true);}
+    });
+    return;
+  }
+  if(s==='Venda Convertida'){
+    abrirModalVendaConvertida(id);
+    return;
+  }
   // Otimismo: aplica localmente agora
   const now=new Date();
   const nowStr=now.toLocaleDateString('pt-BR')+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
   updateLocal(id,{'Status':s,'Último Contato':nowStr});
-  toast(s==='Venda Convertida'?'✅ Venda convertida salva!':'✅ Status atualizado!','success');
-  if(s==='Venda Convertida'){
-    const c=CLIENTS.find(x=>x['ID']===id);
-    showVendaConvertidaCelebration(c?c['Nome']:'');
-  }
-  // Envia para servidor em background
-  apiCall('update',{id,status:s}).then(r=>{
-    if(!r||!r.success){toast('Erro ao salvar status — reconectando...','error');loadClients(true);}
+  toast('✅ Status atualizado!','success');
+  apiCall('update',{id,status:s}).then(async r=>{
+    if(!r||!r.success){toast('Erro ao salvar status — reconectando...','error');await loadClients(true);}
   });
+}
+
+// ===== MODAL VENDA CONVERTIDA =====
+let _vcClienteId=null, _vcNotaExtra='', _vcProxContato='';
+let _vcClinicasData=[];
+
+function abrirModalVendaConvertida(id,notaExtra,proxContato){
+  _vcClienteId=id;
+  _vcNotaExtra=notaExtra||'';
+  _vcProxContato=proxContato||'';
+  // Reset
+  $('vcValorVenda').value='';
+  $('vcTipoVenda').value='Individual';
+  $('vcClinicaFlag').checked=false;
+  $('vcClinicaSelect').style.display='none';
+  // Popular vacinas - com quantidade, em ordem alfabética
+  const cont=$('vcVacinasContainer');
+  if(ORC_VACINAS.length>0){
+    const tipos=[...new Set(ORC_VACINAS.map(v=>v.i))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+    cont.innerHTML=tipos.map(t=>'<div style="display:flex;align-items:center;gap:6px;padding:3px 0;font-size:12px"><input type="checkbox" class="vc-vac-chk" value="'+t+'" style="width:16px;height:16px;accent-color:var(--green)"><label style="flex:1;cursor:pointer" onclick="this.previousElementSibling.click()">'+t+'</label><input type="number" class="vc-vac-qty" min="1" value="1" style="width:42px;text-align:center;padding:2px;border:1px solid #ccc;border-radius:4px;font-size:11px"></div>').join('');
+  } else {
+    cont.innerHTML='<div style="display:flex;align-items:center;gap:6px;padding:3px 0;font-size:12px"><input type="checkbox" class="vc-vac-chk" value="Vacinas (geral)" checked style="width:16px;height:16px"><label style="flex:1">Vacinas (geral)</label><input type="number" class="vc-vac-qty" min="1" value="1" style="width:42px;text-align:center;padding:2px;border:1px solid #ccc;border-radius:4px;font-size:11px"></div>';
+  }
+  // Popular clínicas
+  const clSel=$('vcClinicaSelect');
+  clSel.innerHTML='<option value="">— Selecione a clínica —</option>';
+  _vcClinicasData.forEach(c=>{
+    const n=typeof c==='string'?c:(c.Nome||c.nome||'');
+    if(n){const o=document.createElement('option');o.value=n;o.textContent=n;clSel.appendChild(o);}
+  });
+  $('modalVendaConvertida').classList.add('show');
+}
+
+function closeVendaConvertidaModal(){$('modalVendaConvertida').classList.remove('show');_vcClienteId=null;}
+function toggleVcClinica(){$('vcClinicaSelect').style.display=$('vcClinicaFlag').checked?'block':'none';}
+
+async function confirmarVendaConvertida(){
+  const id=_vcClienteId;if(!id){toast('Erro: cliente não identificado','error');return;}
+  const vacinasChecked=document.querySelectorAll('.vc-vac-chk:checked');
+  const vacinasSel=[];
+  vacinasChecked.forEach(function(cb){
+    var qtyEl=cb.closest('div').querySelector('.vc-vac-qty');
+    var qty=qtyEl?parseInt(qtyEl.value)||1:1;
+    vacinasSel.push(cb.value+(qty>1?' x'+qty:''));
+  });
+  const valor=$('vcValorVenda').value.trim();
+  const tipo=$('vcTipoVenda').value;
+  const isClinica=$('vcClinicaFlag').checked;
+  const clinicaNome=isClinica?$('vcClinicaSelect').value:'';
+  if(!vacinasSel.length){toast('Selecione ao menos uma vacina','error');return;}
+  if(!valor){toast('Informe o valor da venda','error');return;}
+  const c=CLIENTS.find(x=>x['ID']===id);
+  const now=new Date();
+  const nowStr=now.toLocaleDateString('pt-BR')+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  // Montar texto da venda
+  let vendaInfo='✅ VENDA CONVERTIDA ('+nowStr+')\n';
+  vendaInfo+='Vacinas: '+vacinasSel.join(', ')+'\n';
+  vendaInfo+='Tipo: '+tipo+' | Valor: R$ '+valor+'\n';
+  if(isClinica&&clinicaNome)vendaInfo+='Clínica Parceira: '+clinicaNome+'\n';
+  if(_vcNotaExtra)vendaInfo+='Obs: '+_vcNotaExtra;
+  const obsAtual=c?c['Observações']||'':'';
+  const obsNova=(obsAtual?obsAtual+'\n':'')+ vendaInfo;
+  const changes={
+    'Status':'Venda Convertida','Observações':obsNova,'Último Contato':nowStr,
+    'Valor Estimado':'R$ '+valor,'Produto Interesse':vacinasSel.join(', ')
+  };
+  if(_vcProxContato)changes['Próximo Contato']=_vcProxContato;
+  updateLocal(id,changes);
+  closeVendaConvertidaModal();
+  toast('✅ Venda convertida salva!','success');
+  showVendaConvertidaCelebration(c?c['Nome']:'');
+  // Salvar no servidor
+  const apiData={
+    id,status:'Venda Convertida',observacoes:obsNova,
+    valorEstimado:'R$ '+valor,produtoInteresse:vacinasSel.join(', '),
+    novoContato:vendaInfo
+  };
+  if(_vcProxContato)apiData.proximoContato=_vcProxContato;
+  const r=await apiCall('update',apiData);
+  if(r&&r.success){await loadClients(true);}
+  else{toast('Erro ao sincronizar venda — reconectando...','error');await loadClients(true);}
 }
 async function addContactNote(id){
   // Usar modal elegante em vez de prompt
@@ -1782,8 +2408,29 @@ function renderDashboard(){
   if($('vTaxaConversao'))$('vTaxaConversao').textContent=taxa.toFixed(1)+'%';
   if($('vReceitaMedica'))$('vReceitaMedica').textContent=receita;
   if($('vTempoVenda'))$('vTempoVenda').textContent=fmtDurationDays(avgDays(base.filter(c=>c['Status']==='Venda Convertida')));
-  if($('vTempoFinalizacao'))$('vTempoFinalizacao').textContent=fmtDurationDays(avgDays(base.filter(c=>['Venda Convertida','Perdido'].includes(c['Status']))));
   if($('vAguardandoAgenda'))$('vAguardandoAgenda').textContent=aguardandoAgendamento;
+  // Ticket médio, itens por venda e agendamentos
+  const convertidas=base.filter(c=>c['Status']==='Venda Convertida');
+  if($('vTicketMedio')){
+    const valores=convertidas.map(c=>parseFloat(String(c['Valor Estimado']||'0').replace(/[^\d.,]/g,'').replace(',','.'))||0).filter(v=>v>0);
+    const ticketMedio=valores.length>0?(valores.reduce((a,b)=>a+b,0)/valores.length):0;
+    $('vTicketMedio').textContent=ticketMedio>0?'R$ '+ticketMedio.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}):'R$ —';
+  }
+  if($('vItensMedio')){
+    const itens=convertidas.map(c=>{
+      const obs=c['Observações']||'';
+      const m=obs.match(/Vacinas:\s*([^\n]+)/);
+      if(m)return m[1].split(',').length;
+      const p=c['Produto Interesse']||'';
+      return p?p.split(',').length:1;
+    });
+    const med=itens.length>0?(itens.reduce((a,b)=>a+b,0)/itens.length):0;
+    $('vItensMedio').textContent=med>0?med.toFixed(1):'—';
+  }
+  if($('vQtdAgendamentos')){
+    const agend=base.filter(c=>c['Local']&&c['Próximo Contato']&&c['Status']!=='Venda Convertida'&&c['Status']!=='Perdido').length;
+    $('vQtdAgendamentos').textContent=agend;
+  }
   if($('vFollowup'))$('vFollowup').textContent=fuH.length;
   $('totalBadge').textContent=CLIENTS.length;$('agendaBadge').textContent=fuH.length;
   $('followupBadge').textContent=crmPending.length;
@@ -1885,7 +2532,7 @@ function renderAgenda(){
   div.innerHTML=h;
 }
 function agCards(list){
-  return list.map(c=>`<div class="agenda-item ${agendaCls(c)}"><div><strong>${esc(c['Nome'])}</strong><span style="font-size:12px;color:var(--text-light);margin-left:8px">${esc(c['Telefone'])}</span>${localBadge(c)}${c['Responsável']?' <span style="font-size:11px;color:#666">· Resp: '+esc(c['Responsável'])+'</span>':''}${c['Domicílio']==='Sim'||c['Local']==='Domicílio'?' <span style="font-size:11px;color:var(--cor-domicilio);font-weight:700">🏠 DOMICÍLIO</span>':''}${c['Gestante']==='Sim'?' <span class="badge-status badge-gestante">🤰</span>':''}<div style="font-size:12px;color:var(--text-light);margin-top:4px">${c['Próximo Contato']?'📅 '+fmtDate(c['Próximo Contato']):'Sem data'}${c['Horário']?' · 🕐 <strong style="color:var(--navy)">'+esc(c['Horário'])+'</strong>':''}${c['Farmacêutico']?' · 💊 <span style="color:#2a7a4b;font-weight:600">'+esc(c['Farmacêutico'])+'</span>':''}${c['Produto Interesse']?' · 📦 '+esc(c['Produto Interesse']):''}</div></div><div style="display:flex;gap:6px"><button class="btn btn-sm btn-success" onclick="addContactNote('${c['ID']}')">📝</button><button class="btn btn-sm" style="background:var(--blue-accent);color:#fff" onclick="abrirEdicaoCliente('${c['ID']}')">✏️</button><button class="btn btn-sm btn-outline" onclick="openDetail('${c['ID']}')">👁</button></div></div>`).join('');
+  return list.map(c=>`<div class="agenda-item ${agendaCls(c)}"><div><strong>${esc(c['Nome'])}</strong><span style="font-size:12px;color:var(--text-light);margin-left:8px">${esc(c['Telefone'])}</span>${localBadge(c)}${c['Responsável']?' <span style="font-size:11px;color:#666">· Resp: '+esc(c['Responsável'])+'</span>':''}${c['Domicílio']==='Sim'||c['Local']==='Domicílio'?' <span style="font-size:11px;color:var(--cor-domicilio);font-weight:700">🏠 DOMICÍLIO</span>':''}${c['Gestante']==='Sim'?' <span class="badge-status badge-gestante">🤰</span>':''}<div style="font-size:12px;color:var(--text-light);margin-top:4px">${c['Próximo Contato']?'📅 '+fmtDate(c['Próximo Contato']):'Sem data'}${c['Horário']?' · 🕐 <strong style="color:var(--navy)">'+esc(c['Horário'])+'</strong>':''}${c['Farmacêutico']?' · 💊 <span style="color:#2a7a4b;font-weight:600">'+esc(c['Farmacêutico'])+'</span>':''}${c['Produto Interesse']?' · 📦 '+esc(c['Produto Interesse']):''}</div></div><div style="display:flex;gap:6px;align-items:center"><span class="badge-status ${statusCls(c['Status'])}">${esc(c['Status'])}</span><button class="btn btn-sm btn-success" onclick="addContactNote('${c['ID']}')">📝 Novo Contato</button><button class="btn btn-sm" style="background:var(--blue-accent);color:#fff" onclick="abrirEdicaoAgendamento('${c['ID']}')">✏️ Editar</button><button class="btn btn-sm btn-outline" onclick="openDetail('${c['ID']}')">👁</button></div></div>`).join('');
 }
 
 // ===== FOLLOW-UP (CRM VENDAS) =====
@@ -1909,13 +2556,15 @@ function renderFollowup(){
   const div=$('followupList');
   if(!crm.length){div.innerHTML='<div class="empty-state"><div class="icon">📞</div><p>Nenhuma oportunidade pendente. Todas as vendas em dia!</p></div>';return;}
   const hoje=hojeLocal();
-  // Sort: atrasados primeiro, depois hoje, depois próximos, depois sem data
-  // Ordenar: ativos (Em Negociação, Aguardando vacina em ruptura, Novo Contato) primeiro, Convertida/Perdido por último; dentro de cada grupo por data
-  const ordemFu={'Em Negociação':0,'Aguardando vacina em ruptura':1,'Novo Contato':3,'Venda Convertida':4,'Perdido':5};
+  // Ordenar por data: atrasados primeiro, depois hoje, depois próximos, depois sem data
+  // Dentro de cada grupo, ordena por data (mais próxima primeiro)
   const sorted=[...crm].sort((a,b)=>{
-    const oa=ordemFu[a['Status']]??2, ob=ordemFu[b['Status']]??2;
-    if(oa!==ob)return oa-ob;
-    const pa=a['Próximo Contato']||'9999',pb=b['Próximo Contato']||'9999';
+    const pa=a['Próximo Contato']||'',pb=b['Próximo Contato']||'';
+    // Sem data vai para o final
+    if(!pa&&!pb)return 0;
+    if(!pa)return 1;
+    if(!pb)return -1;
+    // Ordena por data crescente (mais antiga/atrasada primeiro)
     return pa.localeCompare(pb);
   });
   const atr=sorted.filter(c=>c['Próximo Contato']&&c['Próximo Contato'].slice(0,10)<hoje);
@@ -2044,6 +2693,7 @@ function switchTab(t){
   document.querySelectorAll('.sidebar-item[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));
   document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id==='page-'+t));
   if(t==='orcamento')orcInit();
+  if(t==='combos')fichaInit();
 }
 
 // ===== UTILS =====
@@ -2056,18 +2706,31 @@ function toggleSidebarLinks(){
   if(btn)btn.classList.toggle('active',show);
 }
 function toggleLinksPanel(){const p=$('linksPanel');p.style.display=p.style.display==='none'?'block':'none';}
+function _resetPainelAgendaHeader(){
+  const header=$('painelFormAgenda').querySelector('.panel-header span');
+  if(header)header.textContent='📅 Novo Agendamento';
+  const btnAgendar=$('painelFormAgenda').querySelector('button[type="submit"]');
+  if(btnAgendar)btnAgendar.textContent='📅 Agendar';
+}
 function toggleFormAgenda(){
   const painel=$('painelFormAgenda');
   const aberto=painel.style.display!=='none';
-  painel.style.display=aberto?'none':'block';
-  if(!aberto){painel.scrollIntoView({behavior:'smooth',block:'start'});}
+  if(aberto){
+    // Fechar: resetar estado de edição
+    _agendaEditId=null;
+    _resetPainelAgendaHeader();
+    painel.style.display='none';
+  }else{
+    painel.style.display='block';
+    painel.scrollIntoView({behavior:'smooth',block:'start'});
+  }
 }
 function toggleGestante(){$('gestanteFields').classList.toggle('show',$('fGestante').value==='Sim')}
 function toggleReceitaMedica(){$('receitaMedicaFields').classList.toggle('show',$('fReceitaMedica').value==='Sim')}
 function limparForm(){$('gestanteFields').classList.remove('show')}
 function localBadge(c){const l=c['Local']||'';if(l.includes('Loja'))return' <span class="local-badge local-loja06">🏪 Loja 06</span>';if(l==='Domicílio'||c['Domicílio']==='Sim')return' <span class="local-badge local-domicilio">🏠 Domicílio</span>';if(l.startsWith('Clínica: ')){const nome=l.replace('Clínica: ','');return' <span class="local-badge local-clinica">🏥 '+esc(nome)+'</span>';}if(l.includes('Clínica'))return' <span class="local-badge local-clinica">🏥 Clínica</span>';return '';}
 function agendaCls(c){const l=c['Local']||'';if(l.includes('Loja'))return'agenda-loja06';if(l==='Domicílio'||c['Domicílio']==='Sim')return'agenda-domicilio';if(l.includes('Clínica'))return'agenda-clinica';return'agenda-default';}
-function temReceitaMedica(c){return ['Sim','SIM','sim','S','s','true',true].includes(c['Receita Médica']||c['Possui Receita Médica']||c['Prescrição Médica']||c['receitaMedica']);}
+function temReceitaMedica(c){const v=c['Receita Médica']||c['Possui Receita Médica']||c['Prescrição Médica']||c['receitaMedica']||'';return ['Sim','SIM','sim','S','s','true',true].includes(v);}
 function statusCls(s){return{'Novo Contato':'badge-novo','Aguardando vacina em ruptura':'badge-aguardando','Em Negociação':'badge-negociacao','Venda Convertida':'badge-convertida','Perdido':'badge-perdido'}[s]||'badge-novo';}
 function fmtDate(d){if(!d)return'';try{const[y,m,dd]=d.slice(0,10).split('-');return dd+'/'+m+'/'+y;}catch{return d;}}
 function esc(s){if(s==null)return'';const d=document.createElement('div');d.textContent=String(s);return d.innerHTML;}
@@ -2077,7 +2740,7 @@ function maskMoney(el){let v=el.value.replace(/\D/g,'');if(!v){el.value='';retur
 function toast(msg,type='info'){const c=$('toastContainer'),t=document.createElement('div');t.className='toast '+type;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),300);},3500);}
 function showLoading(s){} // Substituído por showSyncDot
 $('modalDetalhe').addEventListener('click',function(e){if(e.target===this)closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeMotivoModal();fecharModalContato();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeMotivoModal();fecharModalContato();closeVendaConvertidaModal();}});
 
 // ===== MODAL MOTIVO PERDIDO =====
 let _perdidoId=null,_perdidoCallback=null;
@@ -2106,6 +2769,38 @@ function closeMotivoModal(){document.getElementById('modalMotivoPerdido').classL
 
 // ===== EDIÇÃO DE CLIENTE =====
 let _editId=null;
+let _agendaEditId=null;
+
+// ===== EDIÇÃO DE AGENDAMENTO (abre o painel de agendamento preenchido) =====
+function abrirEdicaoAgendamento(id){
+  const c=CLIENTS.find(x=>x['ID']===id);if(!c)return;
+  _agendaEditId=id;
+  // Preencher campos do painel de agendamento
+  $('aCpf').value=c['CPF']||'';
+  $('aNome').value=c['Nome']||'';
+  $('aTelefone').value=c['Telefone']||'';
+  $('aResponsavel').value=c['Responsável']||'';
+  $('aLocal').value=c['Local']||'';
+  $('aData').value=c['Próximo Contato']||'';
+  $('aHorario').value=c['Horário']||'';
+  $('aEndereco').value=c['Endereço']||'';
+  $('aProduto').value=c['Produto Interesse']||'';
+  $('aObs').value=c['Observações']||'';
+  if($('aFarmaceutico'))$('aFarmaceutico').value=c['Farmacêutico']||'';
+  const dom=(c['Domicílio']==='Sim'||c['Local']==='Domicílio');
+  $('aDomicilio').checked=dom;
+  // Atualizar header e botão do painel
+  const header=$('painelFormAgenda').querySelector('.panel-header span');
+  if(header)header.textContent='✏️ Editar Agendamento';
+  const btnAgendar=$('painelFormAgenda').querySelector('button[type="submit"]');
+  if(btnAgendar){btnAgendar.textContent='💾 Salvar Edição';}
+  // Exibir painel
+  const painel=$('painelFormAgenda');
+  painel.style.display='block';
+  painel.scrollIntoView({behavior:'smooth',block:'start'});
+  toast('Editando agendamento de: '+c['Nome'],'info');
+}
+
 function abrirEdicaoCliente(id){
   const c=CLIENTS.find(x=>x['ID']===id);if(!c)return;
   _editId=id;
@@ -2116,8 +2811,7 @@ function abrirEdicaoCliente(id){
   $('fEmail').value=c['Email']||'';
   $('fCanal').value=c['Canal Contato']||'';
   $('fPerfil').value=c['Perfil']||'';
-  $('fProduto').value=c['Produto Interesse']||'';
-  $('fValor').value=c['Valor Estimado']||'';
+  if($('fVendedor'))$('fVendedor').value=c['Vendedor']||'';
   $('fStatus').value=c['Status']||'Novo Contato';
   $('fGestante').value=c['Gestante']||'Não';
   $('fReceitaMedica').value=temReceitaMedica(c)?'Sim':'Não';
@@ -2144,7 +2838,7 @@ async function salvarEdicaoCliente(){
     id:_editId,
     cpf:$('fCpf').value.trim(),nome:$('fNome').value.trim(),telefone:$('fTelefone').value.trim(),
     email:$('fEmail').value.trim(),canalContato:$('fCanal').value,perfil:$('fPerfil').value,
-    produtoInteresse:$('fProduto').value.trim(),valorEstimado:$('fValor').value,
+    vendedor:$('fVendedor')?$('fVendedor').value.trim():'',
     status:$('fStatus').value,gestante:$('fGestante').value,
     receitaMedica:$('fReceitaMedica').value,nomeMedico:$('fNomeMedico').value.trim(),crmMedico:$('fCrmMedico').value.trim(),
     proximoContato:$('fProxContato').value,farmaceutico:$('fFarmaceutico').value,
@@ -2159,20 +2853,29 @@ async function salvarEdicaoCliente(){
   const editId=_editId;
   const changes={
     'CPF':data.cpf,'Nome':data.nome,'Telefone':data.telefone,'Email':data.email,
-    'Canal Contato':data.canalContato,'Perfil':data.perfil,'Produto Interesse':data.produtoInteresse,
-    'Valor Estimado':data.valorEstimado,'Status':data.status,'Gestante':data.gestante,
+    'Canal Contato':data.canalContato,'Perfil':data.perfil,'Vendedor':data.vendedor,
+    'Status':data.status,'Gestante':data.gestante,
     'Receita Médica':data.receitaMedica,'Nome Médico':data.nomeMedico,'CRM Médico':data.crmMedico,
     'Próximo Contato':data.proximoContato,'Farmacêutico':data.farmaceutico,
     'Observações':data.observacoes,'Data Parto':data.dataParto,'Semana Gestação':data.semanaGestacao
   };
+  // Se status = Venda Convertida, salvar dados básicos primeiro e abrir modal
+  if(data.status==='Venda Convertida'){
+    updateLocal(editId,changes);
+    cancelarEdicaoCliente();
+    toast('Salvando dados básicos...','info');
+    await apiCall('update',data);
+    await loadClients(true);
+    abrirModalVendaConvertida(editId);
+    return;
+  }
   updateLocal(editId,changes);
   cancelarEdicaoCliente();
   toast('Salvando alterações na planilha...','info');
   const r=await apiCall('update',data);
   if(r&&r.success){
     if(r.client)updateLocal(editId,r.client);
-    toast(data.status==='Venda Convertida'?'✅ Venda convertida salva na planilha!':'✅ Cliente atualizado na planilha!','success');
-    if(data.status==='Venda Convertida')showVendaConvertidaCelebration(data.nome);
+    toast('✅ Cliente atualizado na planilha!','success');
     await loadClients(true);
   }else{
     toast('❌ Não salvou alteração: '+(r&&r.error?r.error:'erro desconhecido'),'error');
@@ -2212,27 +2915,337 @@ function buscarCpfCliente(){
   }
 }
 
-// ===== OVERRIDE updateStatus para pedir motivo quando Perdido =====
-const _origUpdateStatus=updateStatus;
-async function updateStatus(id,s){
-  if(s==='Perdido'){
-    pedirMotivoPerdido(id,async function(cid,motivo){
-      const c=CLIENTS.find(x=>x['ID']===cid);
-      const obsAtual=c?c['Observações']||'':'';
-      const obsNova=(obsAtual?obsAtual+'\n':'')+'❌ Motivo da perda: '+motivo;
-      const now=new Date();
-      const nowStr=now.toLocaleDateString('pt-BR')+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-      updateLocal(cid,{'Status':'Perdido','Observações':obsNova,'Último Contato':nowStr});
-      toast('Salvando perdido na planilha...','info');
-      const r=await apiCall('update',{id:cid,status:'Perdido',observacoes:obsNova,novoContato:'Motivo da perda: '+motivo});
-      if(r&&r.success){toast('✅ Status Perdido salvo na planilha!','success');await loadClients(true);} 
-      else {toast('❌ Não salvou status: '+(r&&r.error?r.error:'erro desconhecido'),'error');await loadClients(true);}
+// ===== FICHA DE COMBOS DE VACINAS =====
+const LOGO_V = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAABSCAYAAADuIulwAABO/0lEQVR42u2ddZxd1dX3v3ufc37cZzJxJQ5ECMGdoMGlb6FFSqEF2qelFPcWq0EpFKigbXGCu4YgSdC4Z2KTcbl6ztnvH0fmzsy9kwkE6fPc9flMQ2fuPbLlt5f81lpCKaXISU5ykpP/ApHf9QdUCixLkUPVnOQkJ99pwLKUQgiQUiAc8MpJTnKSA6zvHlhZCikEpmWxfH09AELYIJaTnOQkB1jfGTEsCykFqxqi7P/zuxk3/TCOufZRGjtTDojlQOubOTQsrNxY5+Q7JPp37YFMy0KXkkXrmzjyppdZ+c67FCabeeKZV9kY8/HEL/enujgP01JoUuRm8Os8zaTMDUJOchpWVs3KtNCk5P3lW9jn0sdYtbGRErORpCkotRp5f/EG9rnkMVZsbkWT/z2almlamKaZ5cfqpdWYpkmm4K1SKvM1LCvj57YVADZNE6vHd91nAHhn3nwOP/FHNDW3etfN+CzOM/e81rbeI9O9XXeAOzbu2OU0vZwAiO8KrcFwNKv3lm3hiGueorEjRZh29PmPkUzE8UfySe56AvG4ZHhtIc9fdRQjq4r+V2laSimEEF/6uwqQ/fx+tntZSoGCaCzK2GmH4ff7+OiNxygsyLcXjBBYlpVV+7IsCyHEl36PbV07p/XlTMLvEFht5vBrn6apLYYWiaA3rMaMdyB8IcxoG75YE6mCgaysa+bQq57i+SuPZmR1IYal0L+joJVKGTzy1As0NbXg03VcgoZAYJgmRYX5HHf0oQT8PoQQLFm2kjfenMdxx8yirLTY01CEEGyub+CJp18GCRKBpRSlpcWMGDqQXSaNwx2BTVu28txLb3L80YeQn5cHdAcnd+M/9vRLVFeWs/v0nbsATCmklDz57KsMGFDF0w/dQVFhgfcd999EMsnbcz/io4Vf0NzSyoDqCvbeYxqTxo/x3vvRp19kn5nTqK4q76ZptXd08q//zGG36bswcfxoO8AiBcq595p1G3jznQ9YtnINmqYxZuRQ9pgxhUG11V8J1HPyv+NU/1YlZZpKKaXeXbpJlZx6l+LIPyrtuNuVOPFulTfpGBUp30mFq3dRkbKdVGTa95U46R6lH3+74vDfq2Fn/0Mt3diilFLKMC31XRLDMJRSSj330psKOUDhG6SgOuPPi6++oyzLUo1NLWr8jMMVFKuf/foG7zqGYY/RLy+/SUGFQqtN+36lIn+kOuSYM9SSZauUUkr97Ne/URBRv7ryZucaZq/neuA/TyuoUTtNPVRZltXtby+++raiYKQKV09W73/0qbIsS5mmqUxnrt5890M1bd9jFaLG/vEP9p7jjJ9eqtraOtTrb7+voEhd/dvb7XlOdb3HWedfpqBYTdnnWJVKGcqyuu790CNzVMnAKfb19IH2DxUqVDlRXXfzHcqyLO95c/J/T/Tvgmb17tJNHHntHJra4+gBHcNUhGQCX6yZOBIpwAKCsSZSyiBpKvRwgFUbWzj0qid5/qqjGVVd+J00D79YsgIpJWf/5Afsu8d0kqkUUkqEsH1bBfl5zNxtF4QQ3Prnv/P5ws+RxVW8+tb7xGJxQqGg5+tZtGQFWnEJv7vhEsrLSlDKoq29g38/8TwvPD6HM6NRXp9zP8tWrEaPVHHfw0/yk7O/x4DqSsfUU2iaxoJPF/HTX16LzI8wcEAVQghPc4nF4vz66t/ZZmFLG48+9TzTdp1AKmXg9/t47a15HHn82XS2tXP6Od/nqFn7U1FeytIVq/nLvQ9z723/4JwfnMSKVWuRMkBZabGj1Zn4/X5ee2se/7j/MQLlA1i0ZCWffL6YXSePR0pJQ2MzF11xM+0dnfzqyl9y6AF7ooCFny7iL399kDff+ZCLf/YjNE3mNK2chvUNayCORjR36SZVcoqjWR1/hxLH3KY4/k4VmHWNyquaqMJVk1S4arIKV05U+bVTlO+omxXH3aHEsbcp/YQ7FIf/Xg096x9q+abvlqZlONrIWRdcrpAD1Otvv9/n5z/5fLGKlOykJu5+pNp71veUFhmuPvjoU6WUUsqyLGUYhvrorocqYo9e3vHXK+VHqmTQVMVJW9aFqW9GiJiABvMWfAZ6StD9PY';
+
+let fichaLinhas = [];
+
+function fichaInit(){
+  // Popular farmacêuticos no select da ficha
+  const sel = document.getElementById('fFarmFicha');
+  if(sel && ORC_FARM_DATA && ORC_FARM_DATA.length > 0){
+    sel.innerHTML = '<option value="">Selecione...</option>';
+    ORC_FARM_DATA.forEach(f => {
+      const o = document.createElement('option');
+      o.value = f.Nome || f.nome || '';
+      o.textContent = f.Nome || f.nome || '';
+      sel.appendChild(o);
     });
-  } else {
-    await _origUpdateStatus(id,s);
-    await loadClients(true);
+  }
+  // Data da compra default = hoje
+  const hoje = new Date();
+  const ds = hoje.getFullYear()+'-'+String(hoje.getMonth()+1).padStart(2,'0')+'-'+String(hoje.getDate()).padStart(2,'0');
+  if(document.getElementById('fComprFicha')) document.getElementById('fComprFicha').value = ds;
+  // Garantir pelo menos 15 linhas vazias
+  fichaLinhas = [];
+  for(let i=0;i<15;i++) fichaLinhas.push({vacina:'',qty:'1',dataP:'',visto:'',dataA:''});
+  fichaRenderTabela();
+  fichaRenderPreview();
+}
+
+function fichaAddLinha(){
+  fichaLinhas.push({vacina:'',qty:'1',dataP:'',visto:'',dataA:''});
+  fichaRenderTabela();
+  fichaRenderPreview();
+}
+
+function fichaRenderTabela(){
+  const tb = document.getElementById('fichaTbody');
+  if(!tb) return;
+  tb.innerHTML = fichaLinhas.map((l,i)=>`
+    <tr>
+      <td style="padding:3px 4px;border:1px solid #ddd"><input type="text" value="${esc(l.vacina)}" oninput="fichaLinhas[${i}].vacina=this.value;fichaRenderPreview()" style="width:100%;border:none;font-size:12px;padding:3px 6px;outline:none" placeholder="Nome da vacina"></td>
+      <td style="padding:3px 4px;border:1px solid #ddd;text-align:center"><input type="number" min="1" value="${esc(l.qty)}" oninput="fichaLinhas[${i}].qty=this.value;fichaRenderPreview()" style="width:60px;border:none;font-size:12px;text-align:center;outline:none"></td>
+      <td style="padding:3px 4px;border:1px solid #ddd;text-align:center"><input type="date" value="${esc(l.dataP)}" oninput="fichaLinhas[${i}].dataP=this.value;fichaRenderPreview()" style="border:none;font-size:11px;outline:none"></td>
+      <td style="padding:3px 4px;border:1px solid #ddd;text-align:center"><input type="text" value="${esc(l.visto)}" oninput="fichaLinhas[${i}].visto=this.value;fichaRenderPreview()" style="width:100%;border:none;font-size:12px;text-align:center;outline:none"></td>
+      <td style="padding:3px 4px;border:1px solid #ddd;text-align:center"><input type="date" value="${esc(l.dataA)}" oninput="fichaLinhas[${i}].dataA=this.value;fichaRenderPreview()" style="border:none;font-size:11px;outline:none"></td>
+      <td style="padding:3px 4px;border:1px solid #ddd;text-align:center"><button onclick="fichaRemoveLinha(${i})" style="background:none;border:none;cursor:pointer;color:#c62828;font-size:15px;line-height:1">✕</button></td>
+    </tr>`).join('');
+}
+
+function fichaRemoveLinha(i){
+  fichaLinhas.splice(i,1);
+  fichaRenderTabela();
+  fichaRenderPreview();
+}
+
+function fichaSync(){ fichaRenderPreview(); }
+
+function fmtDataBR(iso){
+  if(!iso) return '';
+  const p = iso.split('-');
+  if(p.length===3) return p[2]+'/'+p[1]+'/'+p[0];
+  return iso;
+}
+
+function fichaRenderPreview(){
+  const preview = document.getElementById('fichaPreview');
+  if(!preview) return;
+  const paciente  = document.getElementById('fPaciente')?.value || '';
+  const cpf       = document.getElementById('fCpfFicha')?.value || '';
+  const resp      = document.getElementById('fResponsavelFicha')?.value || '';
+  const tel       = document.getElementById('fTelefoneFicha')?.value || '';
+  const end       = document.getElementById('fEnderecoFicha')?.value || '';
+  const nasc      = fmtDataBR(document.getElementById('fNascFicha')?.value || '');
+  const compra    = fmtDataBR(document.getElementById('fComprFicha')?.value || '');
+  const farm      = document.getElementById('fFarmFicha')?.value || '';
+
+  // Garantir mínimo de 15 linhas no preview
+  const linhasRender = [...fichaLinhas];
+  while(linhasRender.length < 15) linhasRender.push({vacina:'',qty:'',dataP:'',visto:'',dataA:''});
+
+  preview.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div>
+        <img src="${ORC_LV}" style="height:44px" alt="Vacinas Cruzeiro">
+      </div>
+      <h2 style="font-size:20px;font-weight:900;letter-spacing:1px;color:#111;margin:0;text-align:center;flex:1">COMBOS DE VACINAS</h2>
+      <div>
+        <img src="${ORC_LV}" style="height:44px;opacity:0" alt="">
+      </div>
+    </div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px">
+      <tr>
+        <td style="border:1px solid #222;padding:5px 8px;width:120px;font-weight:700;background:#f5f5f5">Paciente</td>
+        <td style="border:1px solid #222;padding:5px 8px" colspan="3">${esc(paciente)}</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #222;padding:5px 8px;font-weight:700;background:#f5f5f5">CPF do Paciente</td>
+        <td style="border:1px solid #222;padding:5px 8px">${esc(cpf)}</td>
+        <td style="border:1px solid #222;padding:5px 8px;font-weight:700;background:#f5f5f5;width:120px">Data da Compra</td>
+        <td style="border:1px solid #222;padding:5px 8px;width:130px">${compra}</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #222;padding:5px 8px;font-weight:700;background:#f5f5f5">Responsável</td>
+        <td style="border:1px solid #222;padding:5px 8px" colspan="3">${esc(resp)}</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #222;padding:5px 8px;font-weight:700;background:#f5f5f5">Telefone</td>
+        <td style="border:1px solid #222;padding:5px 8px">${esc(tel)}</td>
+        <td style="border:1px solid #222;padding:5px 8px;font-weight:700;background:#f5f5f5">Data de Nascimento</td>
+        <td style="border:1px solid #222;padding:5px 8px">${nasc}</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #222;padding:5px 8px;font-weight:700;background:#f5f5f5">Endereço</td>
+        <td style="border:1px solid #222;padding:5px 8px" colspan="3">${esc(end)}</td>
+      </tr>
+    </table>
+    <table style="width:100%;border-collapse:collapse;font-size:11px">
+      <thead>
+        <tr style="background:#222;color:#fff">
+          <th style="padding:6px 8px;text-align:left;border:1px solid #222;width:34%">Vacinas</th>
+          <th style="padding:6px 8px;text-align:center;border:1px solid #222;width:9%">Quantidade</th>
+          <th style="padding:6px 8px;text-align:center;border:1px solid #222;width:18%">Data prevista aplicação</th>
+          <th style="padding:6px 8px;text-align:center;border:1px solid #222;width:20%">Visto aplicador</th>
+          <th style="padding:6px 8px;text-align:center;border:1px solid #222;width:19%">Data aplicação</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${linhasRender.map((l,i)=>`
+        <tr style="background:${i%2===0?'#fff':'#fafafa'}">
+          <td style="border:1px solid #ccc;padding:5px 7px;height:22px">${esc(l.vacina)}</td>
+          <td style="border:1px solid #ccc;padding:5px 7px;text-align:center">${l.vacina?esc(l.qty):''}</td>
+          <td style="border:1px solid #ccc;padding:5px 7px;text-align:center">${l.dataP?fmtDataBR(l.dataP):''}</td>
+          <td style="border:1px solid #ccc;padding:5px 7px;text-align:center">${esc(l.visto)}</td>
+          <td style="border:1px solid #ccc;padding:5px 7px;text-align:center">${l.dataA?fmtDataBR(l.dataA):''}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:10px">
+      <tr>
+        <td style="border:1px solid #222;padding:6px 8px;font-weight:700;background:#f5f5f5;width:200px">Farmacêutico Responsável</td>
+        <td style="border:1px solid #222;padding:6px 8px">${esc(farm)}</td>
+      </tr>
+    </table>`;
+}
+
+async function imprimirFicha(){
+  const preview = document.getElementById('fichaPreview');
+  if(!preview || !preview.innerHTML.trim()){toast('Preencha a ficha primeiro.','error');return;}
+  if(typeof html2canvas==='undefined'||typeof window.jspdf==='undefined'){
+    toast('Aguarde o carregamento das bibliotecas...','error');return;
+  }
+  toast('Gerando PDF...','info');
+  try{
+    const canvas = await html2canvas(preview,{
+      scale:3,
+      useCORS:true,
+      backgroundColor:'#ffffff',
+      logging:false
+    });
+    const pdf = new window.jspdf.jsPDF('l','mm','a4'); // landscape
+    const margem = 10; // 1cm
+    const pW = pdf.internal.pageSize.getWidth();
+    const pH = pdf.internal.pageSize.getHeight();
+    const areaW = pW - margem*2;
+    const areaH = pH - margem*2;
+    const imgW = canvas.width;
+    const imgH = canvas.height;
+    const ratio = Math.min(areaW/imgW * (canvas.width/canvas.width), areaH/(imgH*(areaW/imgW)));
+    const finalW = areaW;
+    const finalH = imgH * (areaW/imgW);
+    const imgData = canvas.toDataURL('image/jpeg',1.0);
+    pdf.addImage(imgData,'JPEG', margem, margem, finalW, Math.min(finalH, areaH));
+    const paciente = document.getElementById('fPaciente')?.value?.trim()||'Ficha';
+    pdf.save('ComboVacinas_'+paciente.replace(/\s+/g,'_')+'.pdf');
+    toast('✅ PDF baixado com sucesso!','success');
+  }catch(e){
+    toast('Erro ao gerar PDF: '+e.message,'error');
+    console.error(e);
   }
 }
+
+
+function baixarResumoExcel(){
+  if(typeof XLSX === 'undefined'){
+    toast('⚠️ Aguarde o carregamento da biblioteca Excel...','error');
+    return;
+  }
+
+  const wb = XLSX.utils.book_new();
+  const mesFiltro = $('dashMes') ? $('dashMes').value : '';
+
+  // Formatar data: aceita "DD/MM/AAAA HH:MM", "DD/MM/AAAA", "AAAA-MM-DD"
+  function fmtData(d){
+    if(!d) return '';
+    const s = String(d).trim();
+    if(s.match(/^\d{2}\/\d{2}\/\d{4}/)) return s.slice(0,10);
+    if(s.match(/^\d{4}-\d{2}-\d{2}/)){const[y,m,dd]=s.slice(0,10).split('-');return dd+'/'+m+'/'+y;}
+    return s;
+  }
+
+  // Filtrar por mês/ano (mesFiltro = "Junho/2026")
+  function filtrarPorMes(lista){
+    if(!mesFiltro) return lista;
+    const [nomeMes, ano] = mesFiltro.split('/');
+    const mesesPT=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+    const numMes = String(mesesPT.indexOf(nomeMes)+1).padStart(2,'0');
+    return lista.filter(c => {
+      const dc = fmtData(c['Data Cadastro'] || c['Data Finalização'] || '');
+      if(dc.length >= 10){
+        const m = dc.slice(3,5), a = dc.slice(6,10);
+        return m === numMes && a === ano;
+      }
+      return false;
+    });
+  }
+
+  // Extrair info do bloco nas Observações da Venda Convertida
+  function parseVendaObs(obs){
+    const result = { tipo: 'INDIVIDUAL', clinica: '', valor: '', dataVenda: '', vacinas: '' };
+    if(!obs) return result;
+    const mData = obs.match(/VENDA CONVERTIDA \((\d{2}\/\d{2}\/\d{4})/);
+    if(mData) result.dataVenda = mData[1];
+    const mVac = obs.match(/Vacinas:\s*([^\n]+)/);
+    if(mVac) result.vacinas = mVac[1].trim();
+    const mTipo = obs.match(/Tipo:\s*([^|]+)/);
+    if(mTipo) result.tipo = mTipo[1].trim().toUpperCase();
+    const mVal = obs.match(/Valor:\s*R\$\s*([\d.,]+)/);
+    if(mVal) result.valor = parseFloat(mVal[1].replace(/\./g,'').replace(',','.')) || '';
+    const mClin = obs.match(/Clínica Parceira:\s*([^\n]+)/);
+    if(mClin) result.clinica = mClin[1].trim();
+    return result;
+  }
+
+  // Expandir "HPV x2, Dengue" → [{nome:"HPV",qty:2},{nome:"Dengue",qty:1}]
+  function expandirVacinas(vacinasStr){
+    if(!vacinasStr) return [{nome:'',qty:1}];
+    return vacinasStr.split(',').map(v => {
+      const s = v.trim();
+      const m = s.match(/^(.+?)\s+x(\d+)$/);
+      if(m) return {nome: m[1].trim(), qty: parseInt(m[2])};
+      return {nome: s, qty: 1};
+    });
+  }
+
+  // Apenas Vendas Convertidas filtradas por mês
+  const convertidas = filtrarPorMes(CLIENTS.filter(c => c['Status'] === 'Venda Convertida'));
+
+  const rowsVend = [['Vendedor','Data (DD/MM/AAAA)','Aplicador','Vacina (ver aba Lista de Vacinas)','Quantidade','Tipo (Individual ou Empresa)','Nome do Paciente','CPF']];
+  const rowsClin = [['Clínica','Data (DD/MM/AAAA)','Vacina (ver aba Lista de Vacinas)','Quantidade','Valor da Vacina (R$)','Comissão (%)','Aplicador','Nome do Paciente','CPF']];
+
+  convertidas.forEach(c => {
+    const obs = c['Observações'] || '';
+    const info = parseVendaObs(obs);
+    const dataVenda = info.dataVenda || fmtData(c['Data Finalização'] || c['Data Cadastro'] || '');
+    const vacinas = expandirVacinas(info.vacinas || c['Produto Interesse'] || '');
+    const valor = info.valor !== '' ? info.valor : (c['Valor Estimado'] ? parseFloat(String(c['Valor Estimado']).replace(/[^\d.,]/g,'').replace(',','.')) || '' : '');
+    const aplicador = c['Farmacêutico'] || '';
+    const nome = c['Nome'] || '';
+    const cpf = c['CPF'] || '';
+    const vendedor = c['Vendedor'] || '';
+    const isClinica = !!(info.clinica || (c['Local'] && c['Local'].startsWith('Clínica')));
+    const nomeClinica = info.clinica || (c['Local'] ? c['Local'].replace('Clínica: ','').replace('Clínica:','').trim() : '');
+
+    if(isClinica){
+      vacinas.forEach(v => {
+        rowsClin.push([
+          nomeClinica,
+          dataVenda,
+          v.nome || 'GERAL',
+          v.qty,
+          vacinas.length === 1 ? valor : '',
+          10,
+          aplicador,
+          nome,
+          cpf
+        ]);
+      });
+    } else {
+      vacinas.forEach(v => {
+        rowsVend.push([
+          vendedor,
+          dataVenda,
+          aplicador,
+          v.nome,
+          v.qty,
+          info.tipo || 'INDIVIDUAL',
+          nome,
+          cpf
+        ]);
+      });
+    }
+  });
+
+  const wsVend = XLSX.utils.aoa_to_sheet(rowsVend);
+  wsVend['!cols'] = [{wch:22},{wch:18},{wch:20},{wch:48},{wch:12},{wch:30},{wch:24},{wch:20}];
+  XLSX.utils.book_append_sheet(wb, wsVend, 'Vendedores');
+
+  const wsClin = XLSX.utils.aoa_to_sheet(rowsClin);
+  wsClin['!cols'] = [{wch:24},{wch:18},{wch:48},{wch:12},{wch:20},{wch:14},{wch:18},{wch:24},{wch:18}];
+  XLSX.utils.book_append_sheet(wb, wsClin, 'Clinicas Parceiras');
+
+  // Aba Metas Vacinas
+  const mesesNomes = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const rowsMetas = [['Mês','Meta (R$)','Desafio (R$)','Realizado (R$)','Premiação Meta (R$)','Premiação Desafio (R$)','Premiados (nomes separados por vírgula)']];
+  mesesNomes.forEach(m => rowsMetas.push([m,'','','',300,200,'']));
+  const wsMetas = XLSX.utils.aoa_to_sheet(rowsMetas);
+  wsMetas['!cols'] = [{wch:14},{wch:16},{wch:16},{wch:18},{wch:20},{wch:22},{wch:50}];
+  XLSX.utils.book_append_sheet(wb, wsMetas, 'Metas Vacinas');
+
+  // Aba Lista de Vacinas
+  const vacinasBase = ['BCG','Hepatite A','Hepatite B','Hepatite A+B','Hexavalente acelular (DTPa + Hib + Hepatite B + Poliomielite)','Pentavalente acelular','dTpa (Tríplice Bacteriana Acelular)','Rotavírus Pentavalente','Pneumocócica 13 Valente','Pneumocócica 15 Valente','Pneumocócica 20 Valente','Pneumocócica 23 Valente','Meningocócica B','Meningocócica ACWY','Febre Amarela','Tríplice Viral (SCR)','Tetraviral (SCR + Varicela)','Varicela','Influenza Quadrivalente (Gripe)','Influenza Alta Dose','COVID-19','Dengue (Qdenga)','HPV Quadrivalente','HPV Nonavalente (9 Valente)','Herpes-zóster (Shingrix)','Vírus Sincicial Respiratório – RSV/VSR (Abrysvo)','Raiva','Imunoglobulina Anti-Rh (Rho(D))'];
+  const vacinasExtras = new Set();
+  convertidas.forEach(c => {
+    const info = parseVendaObs(c['Observações']||'');
+    expandirVacinas(info.vacinas || c['Produto Interesse']||'').forEach(v => {
+      if(v.nome && !vacinasBase.includes(v.nome)) vacinasExtras.add(v.nome);
+    });
+  });
+  const rowsVac = [['Vacinas Disponíveis'], ...vacinasBase.map(v=>[v]), ...[...vacinasExtras].map(v=>[v])];
+  const wsVac = XLSX.utils.aoa_to_sheet(rowsVac);
+  wsVac['!cols'] = [{wch:60}];
+  XLSX.utils.book_append_sheet(wb, wsVac, 'Lista de Vacinas');
+
+  // Nome do arquivo e download
+  const agora = new Date();
+  const label = mesFiltro ? mesFiltro.replace('/','_') : 'Geral';
+  const nomeFinal = `VACINAS_Cruzeiro_${label}_${String(agora.getDate()).padStart(2,'0')}${String(agora.getMonth()+1).padStart(2,'0')}${agora.getFullYear()}.xlsx`;
+  XLSX.writeFile(wb, nomeFinal);
+  const total = convertidas.length;
+  toast(`✅ ${nomeFinal} — ${total} venda${total!==1?'s':''} convertida${total!==1?'s':''} exportada${total!==1?'s':''}!`, 'success');
+}
+
 
 </script>
 
@@ -2274,6 +3287,57 @@ async function updateStatus(id,s){
 </div>
 
 <!-- MODAL MOTIVO PERDIDO -->
+<!-- MODAL VENDA CONVERTIDA -->
+<div class="modal-overlay" id="modalVendaConvertida">
+  <div class="modal" style="max-width:620px">
+    <div class="modal-header" style="background:linear-gradient(135deg,#1b5e20,#388e3c)">
+      <h3>✅ Registrar Venda Convertida</h3>
+      <button class="modal-close" onclick="closeVendaConvertidaModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="color:#666;font-size:13px;margin-bottom:14px">Preencha os detalhes da venda antes de confirmar.</p>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+        <div class="form-group" style="margin:0">
+          <label style="font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;display:block;margin-bottom:6px">💉 Vacinas Vendidas *</label>
+          <div id="vcVacinasContainer" style="max-height:180px;overflow-y:auto;border:1.5px solid var(--border);border-radius:6px;padding:8px;background:#fafbfc">
+            <div style="font-size:12px;color:#999">Carregando vacinas...</div>
+          </div>
+        </div>
+        <div>
+          <div class="form-group" style="margin:0;margin-bottom:10px">
+            <label style="font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;display:block;margin-bottom:6px">💰 Valor da Venda (R$) *</label>
+            <input type="text" id="vcValorVenda" placeholder="0,00" oninput="maskMoney(this)" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-weight:700;color:var(--green)">
+          </div>
+          <div class="form-group" style="margin:0;margin-bottom:10px">
+            <label style="font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;display:block;margin-bottom:6px">📋 Tipo de Venda</label>
+            <select id="vcTipoVenda" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:6px;font-size:13px">
+              <option value="Individual">Individual</option>
+              <option value="Empresarial">Empresarial</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label style="font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;display:block;margin-bottom:6px">🏥 Clínica Parceira?</label>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+              <input type="checkbox" id="vcClinicaFlag" onchange="toggleVcClinica()" style="width:18px;height:18px;accent-color:var(--teal)">
+              <label for="vcClinicaFlag" style="font-size:13px;cursor:pointer">Sim, é clínica parceira</label>
+            </div>
+            <select id="vcClinicaSelect" style="display:none;width:100%;padding:8px;border:1.5px solid var(--teal);border-radius:6px;font-size:13px">
+              <option value="">— Selecione a clínica —</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="btn-group" style="margin-top:14px">
+        <button class="btn btn-success" onclick="confirmarVendaConvertida()" style="flex:1">🎉 Confirmar Venda</button>
+        <button class="btn btn-outline" onclick="closeVendaConvertidaModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MOTIVO PERDIDO -->
 <div class="modal-overlay" id="modalMotivoPerdido">
   <div class="modal" style="max-width:500px">
     <div class="modal-header" style="background:linear-gradient(135deg,#b71c1c,#e53935)">
@@ -2292,5 +3356,8 @@ async function updateStatus(id,s){
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </body>
 </html>
