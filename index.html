@@ -1277,16 +1277,17 @@ async function apiCall(action,data={}){
     try{res=JSON.parse(txt);}catch(err){
       throw new Error('Resposta inválida do Apps Script: '+txt.slice(0,180));
     }
-    if(!res.success){
+    if(!res.ok){
       console.error('Erro Apps Script:',res);
     }
-    setConn(!!res.success);
+    setConn(!!res.ok);
+    res.success=res.ok; // normalize
     return res;
   }catch(e){
     console.error('Falha API',e);
     setConn(false);
     toast('Falha de conexão/salvamento: '+(e.message||e),'error');
-    return {success:false,error:e.message||String(e)};
+    return {ok:false,error:e.message||String(e)};
   }finally{
     showSyncDot(false);
   }
@@ -1306,7 +1307,7 @@ async function loadClients(force=false){
     return;
   }
   const r=await apiCall('getAll');
-  if(r&&r.success){
+  if(r&&(r.ok||r.success)){
     CLIENTS=r.data||[];
     _lastSync=Date.now();
     renderAll();
